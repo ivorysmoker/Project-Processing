@@ -1,5 +1,5 @@
 //Create all object's
-Player PlayerMario = new Player(5, 200, 14, 20);
+Player PlayerMario = new Player(5, 200, 14, 20, {'standingMario.png'});
 //Animation Stuff
 int numFrames = 4;  // The number of frames in the animation
 int frame = 0;
