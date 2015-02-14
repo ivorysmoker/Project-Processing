@@ -1,0 +1,7 @@
+class Moveable extends Entity {
+	int direction, movementSpeed;
+	boolean isMoving;
+	public void update(){
+		return;
+	}	
+}
