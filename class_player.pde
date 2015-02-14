@@ -21,21 +21,21 @@ class Player extends Entity{
 		for(Enemy e : Enemy.Enemies){
 			if(this.x >= e.x && this.x <= e.x+e.width && this.y >= e.y && this.y <= e.y+e.height){
 					this.Life -= 1;
-				if(this.Life <= 0){
-					GameIsLose = true;
-					image(gameover, 0, 0, 600, 500);
-					
-				}else{
 					this.x = 5; this.y = 200;
 					image(standingMario, this.x, this.y, this.width, this.height);
-				}
 			}
 		}
 		//Mario ist runtergefallen!
 		if(PlayerMario.y >= 500){
 			this.Life -= 1;
+			this.x = 5; this.y = 200;
 			//Spawn Mario from the start Point
 			image(standingMario, this.x, this.y, this.width, this.height);
+		}
+		if(this.Life <= 0){
+					GameIsLose = true;
+					image(gameover, 0, 0, 600, 500);
+					
 		}
 	}
 	public void FeuerBall(){
