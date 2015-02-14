@@ -57,6 +57,7 @@ void setup(){
 	jumpMarioLeft = loadImage("views/Jumping-marioleft.gif");
 	FeuerB = loadImage("views/Feuerball.png");
 	Koopa = loadImage("views/koopa.png");
+	gameover = loadImage("views/gameover.png");
 	images[0]  = loadImage("views/Running-mario1.gif");
     images[1]  = loadImage("views/Running-mario2.gif");
 	images[2]  = loadImage("views/Running-mario3.gif");
