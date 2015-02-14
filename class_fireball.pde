@@ -20,7 +20,7 @@ class FeuerBall{
 			//Kollision
 			for(Enemy e : Enemy.Enemies){
 				if(e != null){
-					if(this.firex >= e.x && this.firex <= e.x+e.width && this.firey >= e.y && this.firey <= e.y+e.heigth){
+					if(this.firex >= e.x && this.firex <= e.x+e.width && this.firey >= e.y && this.firey <= e.y+e.height){
 						println("Ein Feuerball ist kollidiert!"+this.firenumber);
 						MaxFireBall[this.firenumber] = null;
 						e.kill();

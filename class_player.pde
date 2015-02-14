@@ -4,38 +4,30 @@ class Player extends Entity{
 	int x = 5; //Actuell Player Coords MAPPING
 	int y = 200; 
 	int Speed = 0; // Example for Test*/
-	public boolean LeftSpeed = false; //Setzt ob der Linke Pfeilt Aktiv ist
-	public boolean RightSpeed = false; //Keyevent trigger
-	public boolean UpSpeed = false;
-	int Life;
-	Player(int px, int py, int pwidth, int pheight, int plife){
+	Player(int px, int py, int pwidth, int pheight){
 		x = px;
 		y = py;
 		width = pwidth;
 		height = pheight;
-		Life = plife;
 	}
 	
+	public boolean LeftSpeed = false; //Setzt ob der Linke Pfeilt Aktiv ist
+	public boolean RightSpeed = false; //Keyevent trigger
+	public boolean UpSpeed = false;
+	int Life = 3; // Set 3 Player Live
 	private void PlayerDie(){
 		//Mario ist kollidiert mit einem Enemy
 		for(Enemy e : Enemy.Enemies){
-			if(this.x >= e.x && this.x <= e.x+e.width && this.y >= e.y && this.y <= e.y+e.height){
-					this.Life -= 1;
-					this.x = 5; this.y = 200;
-					image(standingMario, this.x, this.y, this.width, this.height);
-			}
+			
+				//adde grösse von mario
+				//if(PlayerMario.x > e.x)
+		
 		}
 		//Mario ist runtergefallen!
 		if(PlayerMario.y >= 500){
-			this.Life -= 1;
-			this.x = 5; this.y = 200;
+			PlayerMario.Life -= 1;
 			//Spawn Mario from the start Point
-			image(standingMario, this.x, this.y, this.width, this.height);
-		}
-		if(this.Life <= 0){
-					GameIsLose = true;
-					image(gameover, 0, 0, 600, 500);
-					
+			image(standingMario, x, y, PlayerMario.width, PlayerMario.height);
 		}
 	}
 	public void FeuerBall(){
