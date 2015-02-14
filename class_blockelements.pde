@@ -1,19 +1,19 @@
 class BlockElements{
-	int x,y,width,heigth,id;
+	int x,y,width,height,id;
 	//Konstuktor breite - höhe - länge - höhe
-	BlockElements(int bx, int by, int bwidth, int bheigth){
+	BlockElements(int bx, int by, int bwidth, int bheight){
 		id = AnzahlObjekte;
 		x = bx;
 		y = by;
 		width = bwidth;
-		heigth = bheigth;
+		height = bheight;
 		MaxBlockElements[AnzahlObjekte] = this;
 		AnzahlObjekte++;
 	}
 	//Methoden
 	private void BlockPlacing(){
-		rect(x, y, width, heigth);
-		image(BlockTexture, x, y , width, heigth);
+		rect(x, y, width, height);
+		image(BlockTexture, x, y , width, height);
 	}
 	static void Collision(){
 		//Best way soooo goooooood!

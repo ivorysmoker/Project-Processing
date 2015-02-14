@@ -26,9 +26,8 @@ BlockElements Boden3 = new BlockElements(200, 200, 100, 10);
 
 
 //Enemys
-Enemy Koopa = new Enemy(150, 20,20,20,1,100,true,false,false); // X + Y Spawnpoint
-Enemy Koopa2 = new Enemy(275, 25,20,20,1,100,true,false,false); // X + Y Spawnpoint
-Enemy Koopa3 = new Enemy(400, 30,20,20,1,100,true,false,false); // X + Y Spawnpoint
+Enemy Koopa = new Enemy(250, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); 
+Enemy Koopa = new Enemy(150, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); 
 //Anziehungskraft
 
 private boolean Gravity = true;
@@ -106,6 +105,7 @@ void draw(){
 	PlayerMario.Movement(); // Keys Event's - Movement
 	PlayerMario.PlayerDie(); //Player Mario Die
 	BlockElements.Collision(); // Aktiviere Player Kollision
+	Entity.draw()
 	}
 }
 void keyPressed() {
