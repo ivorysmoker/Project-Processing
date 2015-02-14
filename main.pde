@@ -1,5 +1,5 @@
 //Create all object's
-Player PlayerMario = new Player(5, 200, 14, 20);
+Player PlayerMario = new Player(5, 200, 14, 20, 3);
 //Animation Stuff
 int numFrames = 4;  // The number of frames in the animation
 int frame = 0;
@@ -27,8 +27,8 @@ BlockElements Boden3 = new BlockElements(200, 200, 100, 10);
 
 //Enemys
 Enemy Koopa = new Enemy(150, 20,20,20,1,100,true,false,false); // X + Y Spawnpoint
-//Enemy Koopa2 = new Enemy(275, 25); // X + Y Spawnpoint
-//Enemy Koopa3 = new Enemy(400, 30); // X + Y Spawnpoint
+Enemy Koopa2 = new Enemy(275, 25,20,20,1,100,true,false,false); // X + Y Spawnpoint
+Enemy Koopa3 = new Enemy(400, 30,20,20,1,100,true,false,false); // X + Y Spawnpoint
 //Anziehungskraft
 
 private boolean Gravity = true;
@@ -44,6 +44,7 @@ boolean LastPressed;
 boolean Fire = false;
 boolean FeuerBallRichtung;
 boolean debug = true;
+boolean GameIsLose = false;
 //boolean ObjectGravity = true; AnzahlFrames += 15;
 void setup(){
 	size(600, 500); // Grösse des Spielfeldes
@@ -55,6 +56,7 @@ void setup(){
 	jumpMarioLeft = loadImage("views/Jumping-marioleft.gif");
 	FeuerB = loadImage("views/Feuerball.png");
 	Koopa = loadImage("views/koopa.png");
+	gameover = loadImage("views/gameover.png");
 	images[0]  = loadImage("views/Running-mario1.gif");
     images[1]  = loadImage("views/Running-mario2.gif");
 	images[2]  = loadImage("views/Running-mario3.gif");
@@ -72,6 +74,9 @@ void setup(){
 }
 
 void draw(){
+	if(GameIsLose == true){
+		//open the Game Settings
+	}else{
 	background( 300 ); // Überdeckt das gezeichnete
 	//Loading all Block Elements
 	for(int x=0; x < AnzahlObjekte; x++){
@@ -101,6 +106,7 @@ void draw(){
 	PlayerMario.Movement(); // Keys Event's - Movement
 	PlayerMario.PlayerDie(); //Player Mario Die
 	BlockElements.Collision(); // Aktiviere Player Kollision
+	}
 }
 void keyPressed() {
  
