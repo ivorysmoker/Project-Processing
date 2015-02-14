@@ -75,10 +75,10 @@ void setup(){
 }
 
 void draw(){
-	background( 300 ); // Überdeckt das gezeichnete
 	if(GameIsLose == true){
 		//open the Game Settings
 	}else{
+	background( 300 ); // Überdeckt das gezeichnete
 	//Loading all Block Elements
 	for(int x=0; x < AnzahlObjekte; x++){
 		MaxBlockElements[x].BlockPlacing();
