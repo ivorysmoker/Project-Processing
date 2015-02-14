@@ -3,7 +3,6 @@ class Entity{
 	int x,y,height,width,textureIndex;
 	ArrayList Textures = new ArrayList();
 	Entity(int ex,int ey,int eheight,int ewidth, String[] etexture){
-		println('creating entity...' + etexture[0])
 		x = ex;
 		y = ey;
 		height = eheight;

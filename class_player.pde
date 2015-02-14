@@ -18,16 +18,23 @@ class Player extends Entity{
 	private void PlayerDie(){
 		//Mario ist kollidiert mit einem Enemy
 		for(Enemy e : Enemy.Enemies){
-			
-				//adde grösse von mario
-				//if(PlayerMario.x > e.x)
-		
+			if(this.x >= e.x && this.x <= e.x+e.width && this.y >= e.y && this.y <= e.y+e.height){
+					this.Life -= 1;
+					this.x = 5; this.y = 200;
+					image(standingMario, this.x, this.y, this.width, this.height);
+			}
 		}
 		//Mario ist runtergefallen!
 		if(PlayerMario.y >= 500){
-			PlayerMario.Life -= 1;
+			this.Life -= 1;
+			this.x = 5; this.y = 200;
 			//Spawn Mario from the start Point
-			image(standingMario, x, y, PlayerMario.width, PlayerMario.height);
+			image(standingMario, this.x, this.y, this.width, this.height);
+		}
+		if(this.Life <= 0){
+					GameIsLose = true;
+					image(gameover, 0, 0, 600, 500);
+					
 		}
 	}
 	public void FeuerBall(){
