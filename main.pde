@@ -45,6 +45,7 @@ boolean LastPressed;
 boolean Fire = false;
 boolean FeuerBallRichtung;
 boolean debug = true;
+boolean GameIsLose = false;
 //boolean ObjectGravity = true; AnzahlFrames += 15;
 void setup(){
 	size(600, 500); // Grösse des Spielfeldes
