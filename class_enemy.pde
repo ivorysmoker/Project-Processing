@@ -5,8 +5,11 @@ class Enemy extends Entity{
 			isJumping,
 			isFacingForward,
 			canFly;
-	Enemy(int ex, int ey, int ewidth, int eheight, int emovmentSpeed, int ejumpPower, boolean eisMoving, boolean eisFacingForward, boolean ecanFly, String[] etexture){
-		super(ex,ey,ewidth,eheight,etexture);
+	Enemy(int ex, int ey, int ewidth, int eheigth, int emovmentSpeed, int ejumpPower, boolean eisMoving, boolean eisFacingForward, boolean ecanFly){
+		this.x = ex;
+		this.y = ey;
+		this.width = ewidth;
+		this.heigth = eheigth;
 		movmentSpeed = emovmentSpeed;
 		JumpPower = ejumpPower;
 		remainingJumpPower = 100;
@@ -21,7 +24,6 @@ class Enemy extends Entity{
 	}
 	public void kill(){
 		Enemies.remove(this);
-		this.remove();
 	}
 	public void jump(){
 		if(!this.isJumping){
@@ -30,7 +32,7 @@ class Enemy extends Entity{
 	}
 	public boolean isOnSolidGround(){
 		for(BlockElements b : MaxBlockElements){
-			if (this.x+this.width > b.x && this.x < b.x+b.width && this.y+this.height >= b.y && this.y+this.height <= b.y+GravityKraft){
+			if (this.x+this.width > b.x && this.x < b.x+b.width && this.y+this.heigth >= b.y && this.y+this.heigth <= b.y+GravityKraft){
 				return true;
 			}
 		}
@@ -50,7 +52,7 @@ class Enemy extends Entity{
 					e.x -= e.movmentSpeed;
 				}
 			}
-			//image(Koopa, e.x, e.y, e.width, e.height);	
+			image(Koopa, e.x, e.y, e.width, e.heigth);	
 		}	
 	}
 }
