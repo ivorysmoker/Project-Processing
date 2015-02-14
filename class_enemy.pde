@@ -15,7 +15,6 @@ class Enemy extends Entity{
 		isFacingForward = eisFacingForward;
 		canFly = ecanFly;
 		Enemy.Enemies.add(this);
-		//
 		MaxEnemyElements[AnzahlEnemy] = this;
 		AnzahlEnemy++;
 	}
