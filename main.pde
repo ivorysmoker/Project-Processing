@@ -1,5 +1,5 @@
 //Create all object's
-Player PlayerMario = new Player(5, 200, 14, 20, {'standingMario.png'});
+Player PlayerMario = new Player(5, 200, 14, 20, 'Player' ,{'standingMario.png'});
 //Animation Stuff
 int numFrames = 4;  // The number of frames in the animation
 int frame = 0;
@@ -26,8 +26,8 @@ BlockElements Boden3 = new BlockElements(200, 200, 100, 10);
 
 
 //Enemys
-Enemy Koopa = new Enemy(250, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
-Enemy Koopa = new Enemy(150, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
+Enemy Koopa = new Enemy(250, 20,20,20,'Enemy',1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
+Enemy Koopa = new Enemy(150, 20,20,20,'Enemy',1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
 //Enemy Koopa2 = new Enemy(275, 25); // X + Y Spawnpoint
 //Enemy Koopa3 = new Enemy(400, 30); // X + Y Spawnpoint
 //Anziehungskraft

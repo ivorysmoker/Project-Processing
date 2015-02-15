@@ -4,8 +4,8 @@ class Player extends Entity{
 	int x = 5; //Actuell Player Coords MAPPING
 	int y = 200; 
 	int Speed = 0; // Example for Test*/
-	Player(int px, int py, int pwidth, int pheight, int ptexture){
-		super(px, py, pwidth, pheight, ptexture);
+	Player(int px, int py, int pwidth, int pheight, String ptype, int ptexture){
+		super(px, py, pwidth, pheight, ptype, ptexture);
 	}
 	
 	public boolean LeftSpeed = false; //Setzt ob der Linke Pfeilt Aktiv ist

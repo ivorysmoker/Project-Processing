@@ -5,8 +5,8 @@ class Enemy extends Entity{
 			isJumping,
 			isFacingForward,
 			canFly;
-	Enemy(int ex, int ey, int ewidth, int eheight, int emovmentSpeed, int ejumpPower, boolean eisMoving, boolean eisFacingForward, boolean ecanFly, String[] etexture){
-		super(ex,ey,ewidth,eheight,etexture);
+	Enemy(int ex, int ey, int ewidth, int eheight, String etype, int emovmentSpeed, int ejumpPower, boolean eisMoving, boolean eisFacingForward, boolean ecanFly, String[] etexture){
+		super(ex,ey,ewidth,eheight,etype,etexture);
 		movmentSpeed = emovmentSpeed;
 		JumpPower = ejumpPower;
 		remainingJumpPower = 100;
