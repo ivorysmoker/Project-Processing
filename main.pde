@@ -1,5 +1,5 @@
 //Create all object's
-Player PlayerMario = new Player(5, 200, 14, 20, 'Player' ,{'standingMario.png'});
+Player PlayerMario = new Player(5, 200, 14, 20, 3);
 //Animation Stuff
 int numFrames = 4;  // The number of frames in the animation
 int frame = 0;
@@ -118,7 +118,7 @@ void keyPressed() {
 	
   }	
   if (key == 's' || key == 'S') {
-	Enemy Koopa = new Enemy(200, 20); // X + Y Spawnpoint
+	Enemy Koopa = new Enemy(250, 20,20,20,'Enemy',1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
   }
   if (key == 'k' || key == 'K') {
 		//Fire = true;

@@ -4,14 +4,20 @@ class Player extends Entity{
 	int x = 5; //Actuell Player Coords MAPPING
 	int y = 200; 
 	int Speed = 0; // Example for Test*/
-	Player(int px, int py, int pwidth, int pheight, String ptype, int ptexture){
-		super(px, py, pwidth, pheight, ptype, ptexture);
+	public boolean LeftSpeed = false, //Setzt ob der Linke Pfeilt Aktiv ist
+	RightSpeed = false, //Keyevent trigger
+	UpSpeed = false;
+	int Life;
+	Player(int px, int py, int pwidth, int pheight, int plife){
+		x = px;
+		y = py;
+		width = pwidth;
+		height = pheight;
+		Life = plife;
+		//Wenn mann hier die Super Klasse läd, wird die Breite und Höhe des Mario's nicht übernommen.
+		//super(px, py, pwidth, pheight, plife);
 	}
 	
-	public boolean LeftSpeed = false; //Setzt ob der Linke Pfeilt Aktiv ist
-	public boolean RightSpeed = false; //Keyevent trigger
-	public boolean UpSpeed = false;
-	int Life = 3; // Set 3 Player Live
 	private void PlayerDie(){
 		//Mario ist kollidiert mit einem Enemy
 		for(Enemy e : Enemy.Enemies){
@@ -29,8 +35,9 @@ class Player extends Entity{
 			image(standingMario, this.x, this.y, this.width, this.height);
 		}
 		if(this.Life <= 0){
-			GameIsLose = true;
-			image(gameover, 0, 0, 600, 500);		
+					GameIsLose = true;
+					image(gameover, 0, 0, 600, 500);
+					
 		}
 	}
 	public void FeuerBall(){
@@ -95,9 +102,9 @@ class Player extends Entity{
 					image(jumpMarioLeft, this.x, this.y, this.width, this.height);	
 					}else{
 						if(LastPressed = true){
-							image(jumpMarioLeft, this.x, this.y, this.width, this.height);	
-						}else{
 							image(jumpMario, this.x, this.y, this.width, this.height);	
+						}else if(LastPressed == false){
+							image(jumpMarioLeft, this.x, this.y, this.width, this.height);	
 						}
 					}
 					//Blocke das Springen
@@ -114,9 +121,9 @@ class Player extends Entity{
 					image(jumpMarioLeft, this.x, this.y, this.width, this.height);	
 					}else{
 						if(LastPressed = true){
-							image(jumpMarioLeft, this.x, this.y, this.width, this.height);	
-						}else{
 							image(jumpMario, this.x, this.y, this.width, this.height);	
+						}else{
+							image(jumpMarioLeft, this.x, this.y, this.width, this.height);	
 						}
 					}
 				//println("Test"+this.RightSpeed);
