@@ -27,7 +27,7 @@ class Entity{
 				//image(standingMario, e.x, e.y, 14, 20);
 				//Hier müsste zimlich viel hin von class_player
 			}*/
-			if(e.type == 'Enemy'){
+			if(e instanceof Enemy){ // das prüäft ob e äs object vom typ Enemy isch... sehr gäbig.. wärd/chöi mir de oft bruchä
 			    image(Koopa, e.x, e.y, e.width, e.height);
 			}
 		}
