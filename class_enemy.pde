@@ -15,8 +15,8 @@ class Enemy extends Entity{
 		isFacingForward = eisFacingForward;
 		canFly = ecanFly;
 		Enemy.Enemies.add(this);
-		MaxEnemyElements[AnzahlEnemy] = this;
-		AnzahlEnemy++;
+		MaxEnemyElements[AnzahlEnemy] = this;   // Bitte entfernen wenn nicht mehr benötigt
+		AnzahlEnemy++;							// Bitte entfernen wenn nicht mehr benötigt
 	}
 	public void kill(){
 		Enemies.remove(this);

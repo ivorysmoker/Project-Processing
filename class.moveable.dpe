@@ -1,8 +1,0 @@
-class Moveable extends Entity {
-	int direction, movementSpeed;
-	boolean isMoving;
-	
-	static void update(){
-		return;
-	}	
-}
