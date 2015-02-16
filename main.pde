@@ -1,5 +1,5 @@
 //Create all object's
-Player PlayerMario = new Player(5, 200, 14, 20, 3);
+Player PlayerMario = new Player(5, 200, 14, 20, {'standingMario.gif'}, 3);
 //Animation Stuff
 int numFrames = 4;  // The number of frames in the animation
 int frame = 0;
@@ -107,6 +107,7 @@ void draw(){
 	PlayerMario.Movement(); // Keys Event's - Movement
 	PlayerMario.PlayerDie(); //Player Mario Die
 	BlockElements.Collision(); // Aktiviere Player Kollision
+	Player.TestingSuperClass();
 	Entity.draw();
 	}
 }

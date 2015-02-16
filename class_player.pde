@@ -8,16 +8,28 @@ class Player extends Entity{
 	RightSpeed = false, //Keyevent trigger
 	UpSpeed = false;
 	int Life;
-	Player(int px, int py, int pwidth, int pheight, int plife){
-		x = px;
+	Player(int px, int py, int pwidth, int pheight, int ptexture, int plife){
+		super(px, py, pwidth, pheight, ptexture);
+		/*x = px;
 		y = py;
 		width = pwidth;
-		height = pheight;
+		height = pheight;*/
 		Life = plife;
 		//Wenn mann hier die Super Klasse läd, wird die Breite und Höhe des Mario's nicht übernommen.
 		//super(px, py, pwidth, pheight, plife);
 	}
-	
+	static void TestingSuperClass(){
+		for (Entity p : Entities){
+			if(p instanceof Player){
+				println("Das Mario Objekt wurde gefunden!");
+				//Anscheinend kapiere ich das noch nicht ganz...
+				//Der obere Konstruktor übergibt an Enitity die Werte an den Konstuktor. Dieser erstellt das sogenante neue Entity
+				//Jetzt befindet sich das Mario objekt in entity
+				//Um die zuholen werden alle entity in p geladen und sobald p eine instanz von player ist gib println aus
+				//Was ist falsch?^^
+			}
+		}
+	}
 	private void PlayerDie(){
 		//Mario ist kollidiert mit einem Enemy
 		for(Enemy e : Enemy.Enemies){
