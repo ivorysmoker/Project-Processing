@@ -50,6 +50,9 @@ boolean GameIsLose = false;
 void setup(){
 	size(600, 500); // Grösse des Spielfeldes
 	frameRate( 40 ); // Bilderrate pro Sekunde 40
+	
+	Spritebank.preloadImages();
+	
 	//Loading pic's for the Aninmation and Movement
 	BlockTexture = loadImage("views/texture.jpg"); 
 	standingMario = loadImage("views/Running-mario4.gif");  
@@ -72,7 +75,7 @@ void setup(){
     images3[1]  = loadImage("views/Feuerball2.png");
 	images3[2]  = loadImage("views/Feuerball3.png");
 	
-	Spritebank.preloadImages(1);
+	
 	if (debug) {noLoop();}
 }
 
@@ -93,7 +96,7 @@ void draw(){
 	if(Gravity == true){
 		PlayerMario.y += GravityKraft;
 	}
-
+	//Spritebank.testdraw();
 	Enemy.update();
 	PlayerMario.Movement(); // Keys Event's - Movement
 	PlayerMario.PlayerDie(); //Player Mario Die
