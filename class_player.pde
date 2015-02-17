@@ -18,16 +18,20 @@ class Player extends Entity{
 		//Wenn mann hier die Super Klasse läd, wird die Breite und Höhe des Mario's nicht übernommen.
 		//super(px, py, pwidth, pheight, plife);
 	}
-	static void TestingSuperClass(){
-		for (Entity p : Entities){
-			//println(p.x);
-			if(p instanceof Player){
-				println("Das Mario Objekt wurde gefunden!");
-				//Anscheinend kapiere ich das noch nicht ganz...
-				//Der obere Konstruktor übergibt an Enitity die Werte an den Konstuktor. Dieser erstellt das sogenante neue Entity
-				//Jetzt befindet sich das Mario objekt in entity
-				//Um die zuholen werden alle entity in p geladen und sobald p eine instanz von player ist gib println aus
-				//Was ist falsch?^^
+	static void isOnGround(){
+		//Läd alle Objekte
+		for(Entity o : Entitie){
+			//Lade Mario
+			if(o instanceof Player){
+				int Player = o;
+			}
+			//Lade Blocks
+			if(b instanceof BlockElements){
+				int Block = b;
+			}
+			
+			if(PlayerMario.x >= MaxBlockElements[a].x-PlayerMario.width && PlayerMario.x <= Thick && PlayerMario.y >= Hoehe && PlayerMario.y <= PXAbfangen){
+			//Spieler steht auf dem Boden Gravity aus
 			}
 		}
 	}
@@ -64,17 +68,6 @@ class Player extends Entity{
 			frame3 = (frame3+1)%numFrames3; 
 			image(images3[frame3], firex, firey, 7, 7);
 			firex += 3;
-		}
-	}
-	public void Render(){
-		if(this.RightSpeed == false && this.LeftSpeed == false && this.UpSpeed == false || this.RightSpeed == true && this.LeftSpeed == true){
-			
-			if(this.LeftSpeed == true || LastPressed == true){
-			image(images2[3], this.x, this.y, this.width, this.height);		
-			}else if(this.RightSpeed == true || LastPressed == false){
-			image(images[3], this.x, this.y, this.width, this.height);
-			}
-			
 		}
 	}
 	public void Movement(){

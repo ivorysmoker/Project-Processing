@@ -19,9 +19,9 @@ private int AnzahlFire = 0;
 private int AnzahlEnemy = 0;
 private int AnzahlObjekte = 0;
 //Block Elements
-BlockElements Boden = new BlockElements(0, 300, 400, 10); // X / Y / Länge / Höhe
-BlockElements Boden2 = new BlockElements(100, 250, 200, 10);
-BlockElements Boden3 = new BlockElements(200, 200, 100, 10);
+BlockElements Boden = new BlockElements(0, 300, 400, 10, {'views/texture.jpg'}); // X / Y / Länge / Höhe
+BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'});
+BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'});
 //BlockElements Boden3 = new BlockElements(200, 100, 200, 50);
 
 
@@ -94,23 +94,13 @@ void draw(){
 		PlayerMario.y += GravityKraft;
 	}
 
-	/*for(b=0; b < AnzahlEnemy; b++){
-		if(MaxEnemyElements[b] != null){
-			if(MaxEnemyElements[b].gms == true){
-			MaxEnemyElements[b].EnemyY += GravityKraft;
-			}
-		}
-
-	/*if(ObjectGravity == true){
-		firey += GravityKraft;
-	}*/
 	Enemy.update();
-	PlayerMario.Render(); // PlayerMario - Mario do nothing? Make This
 	PlayerMario.Movement(); // Keys Event's - Movement
 	PlayerMario.PlayerDie(); //Player Mario Die
+	//Player.isOnGround();
 	BlockElements.Collision(); // Aktiviere Player Kollision
-	Player.TestingSuperClass();
-	Entity.draw();
+	//Player.TestingSuperClass();
+	Entity.draw(); // Render Enemy and Player
 	}
 }
 void keyPressed() {
@@ -121,7 +111,7 @@ void keyPressed() {
 	
   }	
   if (key == 's' || key == 'S') {
-	Enemy Koopa = new Enemy(250, 20,20,20,'Enemy',1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
+	Enemy Koopa = new Enemy(250, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
   }
   if (key == 'k' || key == 'K') {
 		//Fire = true;
@@ -202,240 +192,3 @@ void keyReleased() {
 		
 	}
 }
-/*class Enemy{
-	//Positionen
-	int EnemyX;
-	int EnemyY;
-	boolean gms; // Gravity Multi Settings
-	//Konstuktor
-	Enemy(int x, int y){
-		EnemyX = x;
-		EnemyY = y;
-		gms = true;
-		MaxEnemyElements[AnzahlEnemy] = this;
-		AnzahlEnemy++;
-	}
-	public void EnemyMovement(){
-		this.EnemyX -= 1;
-		image(Koopa, this.EnemyX, this.EnemyY, 20, 20);	
-	}
-}*/
-/* class FeuerBall{
-	int firex = PlayerMario.x; 
-	int firey = PlayerMario.y;
-	int firenumber;
-	boolean Richtung;	
-	FeuerBall(boolean Seite) {
-		firenumber = MaxFireBall.length;
-		MaxFireBall[AnzahlFire] = this;
-		AnzahlFire++;
-		Richtung = Seite;	
-	}
-	
-	public void einfeuerball() {	
-		if(this.Richtung == true){
-		this.firex = this.firex + 6;
-		//Kollision
-		for(x=0; x < AnzahlEnemy; x++){
-			if(MaxEnemyElements[x] != null){
-			if(this.firex >= MaxEnemyElements[x].EnemyX && this.firex <= MaxEnemyElements[x].EnemyX+20 && this.firey >= MaxEnemyElements[x].EnemyY && this.firey <= MaxEnemyElements[x].EnemyY+20){
-			 println("Ein Feuerball ist kollidiert!"+this.firenumber);
-			 MaxFireBall[this.firenumber] = null;
-			 MaxEnemyElements[x] = null;
-			 //AnzahlEnemy--;
-			}else{
-			frame3 = (frame3+1)%numFrames3;
-			image(images3[frame3], this.firex, this.firey, 7, 9);
-			}
-			}
-		}
-		//Feuerball Left
-		}else{
-			
-		this.firex = this.firex - 6;
-		for(x=0; x < AnzahlEnemy; x++){
-			if(MaxEnemyElements[x] != null){
-			if(this.firex >= MaxEnemyElements[x].EnemyX && this.firex <= MaxEnemyElements[x].EnemyX+20 && this.firey >= MaxEnemyElements[x].EnemyY && this.firey <= MaxEnemyElements[x].EnemyY+20){
-				println("Ein Feuerball ist kollidiert!"+this.firenumber);
-				MaxFireBall[this.firenumber] = null;
-				MaxEnemyElements[x] = null;
-				//AnzahlEnemy--;
-			}else{
-				frame3 = (frame3+1)%numFrames3;
-				image(images3[frame3], this.firex, this.firey, 7, 9);	
-			}
-			}
-		}
-		}
-		}
-	}*/
-
-
-/*class Player{ 
-	//Eigenschaften
-	int realX = 5; // The Real Player Coord X
-	int x = 5; //Actuell Player Coords MAPPING
-	int y = 200; 
-	int Speed = 0; // Example for Test
-	public boolean LeftSpeed = false; //Setzt ob der Linke Pfeilt Aktiv ist
-	public boolean RightSpeed = false; //Keyevent trigger
-	public boolean UpSpeed = false;
-	int Life = 2;
-	//Methode wenn Spieler stirbt
-	public void FeuerBall(){
-		
-		//Welche Seite drückt der Spieler
-		if(PlayerMario.LeftSpeed == true || LastPressed == true){
-					
-			firex -= 3;
-			//um den feuerball sringen zu lassen, addre bsp alle 3 frame 4 höhe - die gravity wird in automatisch wieder runter drücken
-		}else if(PlayerMario.RightSpeed == true || LastPressed == false){
-			frame3 = (frame3+1)%numFrames3; 
-			image(images3[frame3], firex, firey, 7, 7);
-			firex += 3;
-		}
-	}
-	public void Render(){
-		if(PlayerMario.RightSpeed == false && PlayerMario.LeftSpeed == false && PlayerMario.UpSpeed == false || PlayerMario.RightSpeed == true && PlayerMario.LeftSpeed == true){
-			
-			if(PlayerMario.LeftSpeed == true || LastPressed == true){
-			image(images2[3], PlayerMario.x, PlayerMario.y, 14, 20);		
-			}else if(PlayerMario.RightSpeed == true || LastPressed == false){
-			image(images[3], PlayerMario.x, PlayerMario.y, 14, 20);
-			}
-			
-		}
-	}
-	public void Movement(){
-		//Rechts
-		
-		if(PlayerMario.RightSpeed == true){
-			println("Test"+PlayerMario.RightSpeed);
-			PlayerMario.x += MovementMaxSpeed;
-			//Animation
-			frame = (frame+1)%numFrames; 
-			image(images[frame], PlayerMario.x, PlayerMario.y, 14, 20);
-		}
-		//Links
-		if(PlayerMario.LeftSpeed == true){
-			PlayerMario.x -= MovementMaxSpeed;
-			//Animation
-			frame2 = (frame2+1)%numFrames2; 
-			image(images2[frame2], PlayerMario.x, PlayerMario.y, 14, 20);
-		}
-		//Nac
-		if(PlayerMario.UpSpeed == true){
-				if(FramesBlocker == false){
-					AnzahlFrames = frameCount;
-					AnzahlFramesSpeicher = frameCount;
-					FramesBlocker = true;
-				}
-				if(AnzahlFrames > (AnzahlFramesSpeicher+15)){
-					println("Frames wurde erreicht! Springen verboten!");
-					image(jumpMario, PlayerMario.x, PlayerMario.y, 14, 20);
-					//Blocke das Springen
-					PlayerMario.UpSpeed = false;
-				}else{
-					println(JumpOptik);
-						PlayerMario.y -= 4;
-
-				AnzahlFrames++;
-				JumpOptik++;
-				image(jumpMario, PlayerMario.x, PlayerMario.y, 14, 20);
-				println("Test"+PlayerMario.RightSpeed);
-				}
-		}
-		
-	}
-}*/
-
-
-/*class BlockElements{
-	int BlockHeight;
-	int BlockWidth;
-	int BlockThick;
-	int BlockHoehe;
-	//Konstuktor breite - höhe - länge - höhe
-	BlockElements(int width, int height, int thick, int hoehe){
-		BlockHeight = height;
-		BlockWidth = width;
-		BlockThick = thick;
-		BlockHoehe = hoehe;
-		MaxBlockElements[AnzahlObjekte] = this;
-		AnzahlObjekte++;
-	}
-	//Methoden
-	private void BlockPlacing(){
-		rect(BlockWidth, BlockHeight, BlockThick, 30);
-	}
-	static void EnemyCollision(){
-			//NewBlock.BlockThick;0, 300, 400, 100
-		
-					int y = MaxBlockElements[0].BlockHeight - 20;
-					int h = y + GravityKraft; // 4 = gravity
-					int l = MaxBlockElements[0].BlockWidth + MaxBlockElements[0].BlockThick;
-					if(MaxEnemyElements[0] != null){
-								//Die Werte Stimmen, komischerweise wird immer ein Block ingoriert!
-								if(MaxEnemyElements[0].EnemyX >= MaxBlockElements[0].BlockWidth && MaxEnemyElements[0].EnemyX <= l && MaxEnemyElements[0].EnemyY >= y && MaxEnemyElements[0].EnemyY <= h){
-									//EnemyGravity = false;
-									MaxEnemyElements[0].gms = false;
-									//println("Enemy Gravity wurde deaktiviert");
-									counts+=1;
-									println(counts);
-								}else{
-									MaxEnemyElements[0].gms = true;
-									//println("Aktiv");
-								}
-					}
-					int y = MaxBlockElements[1].BlockHeight - 20;
-					int h = y + GravityKraft; // 4 = gravity
-					int l = MaxBlockElements[1].BlockWidth + MaxBlockElements[1].BlockThick;
-					if(MaxEnemyElements[0] != null){
-								//Die Werte Stimmen, komischerweise wird immer ein Block ingoriert!
-								if(MaxEnemyElements[0].EnemyX >= MaxBlockElements[1].BlockWidth && MaxEnemyElements[0].EnemyX <= l && MaxEnemyElements[0].EnemyY >= y && MaxEnemyElements[0].EnemyY <= h){
-									//EnemyGravity = false;
-									MaxEnemyElements[0].gms = false;
-									//println("Enemy Gravity wurde deaktiviert");
-									counts+=1;
-									println(counts);
-								}else{
-									
-									MaxEnemyElements[0].gms = true;
-									//println("Aktiv");
-								}
-					}
-	}
-	static void Collision(){
-		//Best way soooo goooooood!
-		//villeicht mit einem array? for dyn array MaxBlockElements
-		for(x=0; x < AnzahlObjekte; x++){
-			//Objekt name kommt als String, dieser kann nicht verwendet werden um code blöcke zu bauen. Daher den String unwandeln
-			int Hoehe = MaxBlockElements[x].BlockHeight - 20;
-			int PXAbfangen = Hoehe + GravityKraft; // 4 = gravity
-			int Thick = MaxBlockElements[x].BlockWidth + MaxBlockElements[x].BlockThick; 
-			//NewBlock.BlockThick;0, 300, 400, 100
-			//0, 300, 400, 100      X 300- mario grösse 100, 240, 300, 50
-			//println("Block Dicke ist: "+MaxBlockElements[x].BlockThick);
-			//Player Collison and gravity settings
-			if(PlayerMario.x >= MaxBlockElements[x].BlockWidth && PlayerMario.x <= Thick && PlayerMario.y >= Hoehe && PlayerMario.y <= PXAbfangen){
-				//Spieler steht auf dem Boden Gravity aus
-				//println("Block Dicke ist: "+MaxBlockElements[x].BlockThick);
-					Gravity = false;
-					if(PlayerMario.UpSpeed == false){
-					FramesBlocker = false;
-					}
-					x = AnzahlObjekte;
-					//Falls dies eintrifft schalte value auf true
-					//Schalte das value auf false wenn kein objekt zutrifft
-					//Frage ab ob das value auf true ist wen ja gravity false
-			}else{
-				if(PlayerMario.UpSpeed == true){
-					Gravity = false;	
-				}else{
-					Gravity = true;
-				}
-			}	
-		}
-		//Alle existierten objekte in dieser klasse laden, werte ausrechnenen, Cod 
-	}
-}*/
