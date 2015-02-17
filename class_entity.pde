@@ -1,13 +1,12 @@
 class Entity{
 	static ArrayList Entities = new ArrayList();
-	int x,y,height,width,type,textureIndex;
+	int x,y,height,width,textureIndex;
 	ArrayList Textures = new ArrayList();
-	Entity(int ex,int ey,int eheight,int ewidth, String etype , String[] etexture){
+	Entity(int ex,int ey,int ewidth,int eheight, String[] etexture){
 		x = ex;
 		y = ey;
 		height = eheight;
 		width = ewidth;
-		type = etype;
 		textureIndex = 1;
 			for (String s : etexture){
 				Textures.add(loadImage(s));

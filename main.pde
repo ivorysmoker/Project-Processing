@@ -26,8 +26,8 @@ BlockElements Boden3 = new BlockElements(200, 200, 100, 10);
 
 
 //Enemys
-Enemy Koopa = new Enemy(250, 20,20,20,'Enemy',1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
-Enemy Koopa = new Enemy(150, 20,20,20,'Enemy',1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
+Enemy K = new Enemy(250, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
+Enemy K = new Enemy(150, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
 //Enemy Koopa2 = new Enemy(275, 25); // X + Y Spawnpoint
 //Enemy Koopa3 = new Enemy(400, 30); // X + Y Spawnpoint
 //Anziehungskraft
@@ -71,6 +71,8 @@ void setup(){
 	images3[0]  = loadImage("views/Feuerball.png");
     images3[1]  = loadImage("views/Feuerball2.png");
 	images3[2]  = loadImage("views/Feuerball3.png");
+	
+	Spritebank.preloadImages(1);
 	if (debug) {noLoop();}
 }
 

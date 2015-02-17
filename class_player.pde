@@ -8,7 +8,7 @@ class Player extends Entity{
 	RightSpeed = false, //Keyevent trigger
 	UpSpeed = false;
 	int Life;
-	Player(int px, int py, int pwidth, int pheight, int ptexture, int plife){
+	Player(int px, int py, int pwidth, int pheight, String[] ptexture, int plife){
 		super(px, py, pwidth, pheight, ptexture);
 		/*x = px;
 		y = py;
@@ -20,6 +20,7 @@ class Player extends Entity{
 	}
 	static void TestingSuperClass(){
 		for (Entity p : Entities){
+			//println(p.x);
 			if(p instanceof Player){
 				println("Das Mario Objekt wurde gefunden!");
 				//Anscheinend kapiere ich das noch nicht ganz...
