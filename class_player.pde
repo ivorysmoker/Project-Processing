@@ -19,21 +19,34 @@ class Player extends Entity{
 		//super(px, py, pwidth, pheight, plife);
 	}
 	static void isOnGround(){
-		//Läd alle Objekte
-		for(Entity o : Entitie){
-			//Lade Mario
-			if(o instanceof Player){
-				int Player = o;
-			}
-			//Lade Blocks
-			if(b instanceof BlockElements){
-				int Block = b;
-			}
-			
-			if(PlayerMario.x >= MaxBlockElements[a].x-PlayerMario.width && PlayerMario.x <= Thick && PlayerMario.y >= Hoehe && PlayerMario.y <= PXAbfangen){
-			//Spieler steht auf dem Boden Gravity aus
+		//omg das isch ja so epic
+		for (Entity e : Entities){
+			if(e instanceof Player){
+				int p = e;
 			}
 		}
+		for (Entity b : Entities){
+			if(b instanceof BlockElements){
+				if(p.x >= b.x-p.width && p.x <= b.x+b.width && p.y >= b.y-p.height && p.y <= b.y-p.height+GravityKraft){
+					//println("Mario hat einen festen untergrund!");
+					//Notiz für mich: Hier den Code auseinander nehmen und schritte verfolgen damit keine Bugs entstehen!
+					//Sowie besser hinterlegen, update funktion integrieren! + return maybe epic /boolean nicht vergessen statt void
+					//lauf bug, der mario wird immer hochgedrückt. Lexu noch fragen wo der code integriert wurde.
+					Gravity = false;
+					if(PlayerMario.UpSpeed == false){
+						FramesBlocker = false;
+					}
+					p.y = b.y-p.height;
+				}else{
+					if(PlayerMario.UpSpeed == true){
+						Gravity = false;	
+					}else{
+						Gravity = true;
+					}
+				}
+			}	
+		}
+		
 	}
 	private void PlayerDie(){
 		//Mario ist kollidiert mit einem Enemy
