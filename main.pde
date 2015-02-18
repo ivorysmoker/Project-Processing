@@ -51,7 +51,7 @@ void setup(){
 	size(600, 500); // Grösse des Spielfeldes
 	frameRate( 40 ); // Bilderrate pro Sekunde 40
 	
-	Spritebank.preloadImages();
+	//Spritebank.preloadImages();
 	
 	//Loading pic's for the Aninmation and Movement
 	BlockTexture = loadImage("views/texture.jpg"); 
@@ -96,7 +96,7 @@ void draw(){
 	if(Gravity == true){
 		PlayerMario.y += GravityKraft;
 	}
-	Spritebank.testdraw();
+	//Spritebank.testdraw();
 	Enemy.update();
 	Player.isOnGround();
 	PlayerMario.Movement(); // Keys Event's - Movement
