@@ -96,7 +96,7 @@ void draw(){
 	if(Gravity == true){
 		PlayerMario.y += GravityKraft;
 	}
-	//Spritebank.testdraw();
+	Spritebank.testdraw();
 	Enemy.update();
 	PlayerMario.Movement(); // Keys Event's - Movement
 	PlayerMario.PlayerDie(); //Player Mario Die

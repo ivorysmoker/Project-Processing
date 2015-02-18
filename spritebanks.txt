@@ -1,0 +1,4 @@
+ path;name;width;height;animationname1/framecount1/frameskip1,animationname2/framecount2/frameskip2
+ path;name;width;height;animationname1/framecount1/frameskip1,animationname2/framecount2/frameskip2
+ path;name;width;height;animationname1/framecount1/frameskip1,animationname2/framecount2/frameskip2
+ path;name;width;height;animationname1/framecount1/frameskip1,animationname2/framecount2/frameskip2
