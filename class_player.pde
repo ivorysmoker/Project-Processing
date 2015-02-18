@@ -19,7 +19,7 @@ class Player extends Entity{
 		//super(px, py, pwidth, pheight, plife);
 	}
 	static void isOnGround(){
-		//omg das isch ja so epic
+		//omg das isch ja so epic  //Lexu: wie meinsch das isch epic? was bringt de das jtz? its duäsch vo aunä entities alli wo instanceof player si i ä 'int' var?
 		for (Entity e : Entities){
 			if(e instanceof Player){
 				int p = e;
@@ -73,10 +73,12 @@ class Player extends Entity{
 	public void FeuerBall(){
 		
 		//Welche Seite drückt der Spieler
+		//if(this.LeftSpeed || LastPressed ){  // isch genau ds glichä eifach haut eifacher ;)     (needsremoval)
 		if(this.LeftSpeed == true || LastPressed == true){
 					
 			firex -= 3;
 			//um den feuerball sringen zu lassen, addre bsp alle 3 frame 4 höhe - die gravity wird in automatisch wieder runter drücken
+		//}else if(this.RightSpeed|| !LastPressed){  // da o    (needsremoval)
 		}else if(this.RightSpeed == true || LastPressed == false){
 			frame3 = (frame3+1)%numFrames3; 
 			image(images3[frame3], firex, firey, 7, 7);
@@ -85,13 +87,16 @@ class Player extends Entity{
 	}
 	public void Movement(){
 		//Rechts
+		//if(this.RightSpeed && this.LeftSpeed){  // da o    (needsremoval)
 		if(this.RightSpeed == true && this.LeftSpeed == true){
 				image(standingMario, this.x, this.y, this.width, this.height);
 		}else{
+		//if(this.RightSpeed){  // da o    (needsremoval)
 		if(this.RightSpeed == true){
 			//println("Test"+this.RightSpeed);
 			this.x += MovementMaxSpeed;
 			//Animation
+			//if(!this.UpSpeed){  // da o und haut viller orts :)   (needsremoval)
 			if(this.UpSpeed == false){
 			frame = (frame+1)%numFrames; 
 			image(images[frame], this.x, this.y, this.width, this.height);
