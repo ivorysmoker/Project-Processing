@@ -98,9 +98,9 @@ void draw(){
 	}
 	//Spritebank.testdraw();
 	Enemy.update();
+	Player.isOnGround();
 	PlayerMario.Movement(); // Keys Event's - Movement
 	PlayerMario.PlayerDie(); //Player Mario Die
-	Player.isOnGround();
 	//BlockElements.Collision(); // Aktiviere Player Kollision
 	//Player.TestingSuperClass();
 	Entity.draw(); // Render Enemy and Player

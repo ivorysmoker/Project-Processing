@@ -22,7 +22,7 @@ class Player extends Entity{
 		//omg das isch ja so epic  //Lexu: wie meinsch das isch epic? was bringt de das jtz? its duaesch vo aunae entities alli wo instanceof player si i ae 'int' var?
 		for (Entity e : Entities){
 			if(e instanceof Player){
-				int p = e;
+				Player p = e;
 			}
 		}
 		for (Entity b : Entities){
