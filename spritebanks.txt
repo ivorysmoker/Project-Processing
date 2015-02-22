@@ -1,4 +1,4 @@
- path;name;width;height;animationname1/framecount1/frameskip1,animationname2/framecount2/frameskip2
- path;name;width;height;animationname1/framecount1/frameskip1,animationname2/framecount2/frameskip2
- path;name;width;height;animationname1/framecount1/frameskip1,animationname2/framecount2/frameskip2
- path;name;width;height;animationname1/framecount1/frameskip1,animationname2/framecount2/frameskip2
+testspritebank.jpg;name1;name1animationname1-framecount1-frameskip1-farmewidth1-frameheight1:name1animationname2-framecount2-frameskip2-farmewidth2-frameheight2
+testspritebank.jpg;name2;name2animationname1-framecount1-frameskip1-farmewidth1-frameheight1:name2animationname2-framecount2-frameskip2-farmewidth2-frameheight2
+testspritebank.jpg;name3;name3animationname1-framecount1-frameskip1-farmewidth1-frameheight1:name3animationname2-framecount2-frameskip2-farmewidth2-frameheight2
+testspritebank.jpg;name4;name4animationname1-framecount1-frameskip1-farmewidth1-frameheight1:name4animationname2-framecount2-frameskip2-farmewidth2-frameheight2

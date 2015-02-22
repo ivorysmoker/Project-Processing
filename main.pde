@@ -53,7 +53,7 @@ void setup(){
 	size(600, 500); // Grösse des Spielfeldes
 	frameRate( 40 ); // Bilderrate pro Sekunde 40
 	
-	//Spritebank.preloadImages();
+	Spritebank.preloadImages();
 	
 	//Loading pic's for the Aninmation and Movement
 	BlockTexture = loadImage("views/texture.jpg"); 
@@ -85,7 +85,7 @@ void draw(){
 	if(GameIsLose == true){
 		//open the Game Settings
 	}else{
-	background( 300 ); // Überdeckt das gezeichnete
+	background(255, 204, 0); // Überdeckt das gezeichnete
 	//Loading all Block Elements
 	for(int x=0; x < AnzahlObjekte; x++){
 		MaxBlockElements[x].BlockPlacing();
