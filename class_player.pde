@@ -46,7 +46,42 @@ class Player extends Entity{
 				}
 			}	
 		}
-		
+		for (Entity d : Entities){
+			if(d instanceof DestroyableBlocksElements){
+				//50, 200, 25, 25
+					//ist Mario oberhalb des Blockes?
+					//Left ist noch buggy,
+					if(p.x >= d.x && p.x <= d.x-GravityKraft && p.y >= 175 && p.y <= 225){
+						println("Mario Block Left");
+						p.x -= MovementMaxSpeed;
+						AnzahlFrames += 15;
+						break;
+					}
+					if(p.x >= d.x+d.width-GravityKraft && p.x <= d.x+d.width && p.y >= 175 && p.y <= 225){
+						println("Mario Block Right");
+						p.x += MovementMaxSpeed;
+						AnzahlFrames += 15;
+						break;
+					}
+					if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-d.height+GravityKraft && p.y <= d.y){
+						println("Mario ist auf dem Block!");
+						Gravity = false;
+						if(PlayerMario.UpSpeed == false){
+							FramesBlocker = false;
+						}
+						break;
+					}
+					if(p.x >= d.x-p.width+3 && p.x <= d.x+d.width-3 && p.y >= d.y+d.height && p.y <= d.y+d.height+GravityKraft){
+						println("Unterhalb des Blockes");
+						Gravity = false;
+						if(PlayerMario.UpSpeed == false){
+							FramesBlocker = false;
+						}
+						Entities.remove(d);
+						break;
+					}	
+			}
+		}
 	}
 	private void PlayerDie(){
 		//Mario ist kollidiert mit einem Enemy
