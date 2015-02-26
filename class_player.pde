@@ -51,8 +51,9 @@ class Player extends Entity{
 				//50, 200, 25, 25
 					//ist Mario oberhalb des Blockes?
 					//Left ist perfekt anderes zeug überarbeiten
-					if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-d.height+GravityKraft && p.y <= d.y-d.height+GravityKraft+1){
+					if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-d.height+GravityKraft && p.y <= d.y+GravityKraft){
 						println("Mario ist auf dem Block!");
+						
 						Gravity = false;
 						if(PlayerMario.UpSpeed == false){
 							FramesBlocker = false;
