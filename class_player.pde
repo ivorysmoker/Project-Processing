@@ -50,20 +50,8 @@ class Player extends Entity{
 			if(d instanceof DestroyableBlocksElements){
 				//50, 200, 25, 25
 					//ist Mario oberhalb des Blockes?
-					//Left ist noch buggy,
-					if(p.x >= d.x && p.x <= d.x-GravityKraft && p.y >= 175 && p.y <= 225){
-						println("Mario Block Left");
-						p.x -= MovementMaxSpeed;
-						AnzahlFrames += 15;
-						break;
-					}
-					if(p.x >= d.x+d.width-GravityKraft && p.x <= d.x+d.width && p.y >= 175 && p.y <= 225){
-						println("Mario Block Right");
-						p.x += MovementMaxSpeed;
-						AnzahlFrames += 15;
-						break;
-					}
-					if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-d.height+GravityKraft && p.y <= d.y){
+					//Left ist perfekt anderes zeug überarbeiten
+					if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-d.height+GravityKraft && p.y <= d.y-d.height+GravityKraft+1){
 						println("Mario ist auf dem Block!");
 						Gravity = false;
 						if(PlayerMario.UpSpeed == false){
@@ -71,15 +59,29 @@ class Player extends Entity{
 						}
 						break;
 					}
-					if(p.x >= d.x-p.width+3 && p.x <= d.x+d.width-3 && p.y >= d.y+d.height && p.y <= d.y+d.height+GravityKraft){
-						println("Unterhalb des Blockes");
-						Gravity = false;
-						if(PlayerMario.UpSpeed == false){
-							FramesBlocker = false;
-						}
-						Entities.remove(d);
+					if(p.x >= d.x-p.width && p.x <= d.x+GravityKraft && p.y >= d.y-d.height && p.y <= d.y+d.height){
+						println("Mario Block Left");
+						p.x -= MovementMaxSpeed;
+						AnzahlFrames += 15;
 						break;
-					}	
+					}
+					if(p.x >= d.x+d.width-GravityKraft && p.x <= d.x+d.width && p.y >= d.y-d.height && p.y <= d.y+d.height){
+						println("Mario Block Right");
+						p.x += MovementMaxSpeed;
+						AnzahlFrames += 15;
+						break;
+					}
+					if(Gravity == false){
+						if(p.x >= d.x-p.width+3 && p.x <= d.x+d.width-3 && p.y >= d.y+d.height && p.y <= d.y+d.height+GravityKraft){
+							println("Unterhalb des Blockes");
+							Gravity = false;
+							if(PlayerMario.UpSpeed == false){
+								FramesBlocker = false;
+							}
+							Entities.remove(d);
+							break;
+						}	
+					}
 			}
 		}
 	}
