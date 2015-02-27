@@ -1,4 +1,1 @@
-testspritebank.jpg;name1;name1animationname1-framecount1-frameskip1-farmewidth1-frameheight1:name1animationname2-framecount2-frameskip2-farmewidth2-frameheight2
-testspritebank.jpg;name2;name2animationname1-framecount1-frameskip1-farmewidth1-frameheight1:name2animationname2-framecount2-frameskip2-farmewidth2-frameheight2
-testspritebank.jpg;name3;name3animationname1-framecount1-frameskip1-farmewidth1-frameheight1:name3animationname2-framecount2-frameskip2-farmewidth2-frameheight2
-testspritebank.jpg;name4;name4animationname1-framecount1-frameskip1-farmewidth1-frameheight1:name4animationname2-framecount2-frameskip2-farmewidth2-frameheight2
+debugspritebank.png;TestSP1;IDLE-6-3-20-30:MOVE-3-0-20-30:JUMP-5-1-20-30
