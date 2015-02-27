@@ -18,7 +18,7 @@ class Player extends Entity{
 		//Wenn mann hier die Super Klasse läd, wird die Breite und Höhe des Mario's nicht übernommen.
 		//super(px, py, pwidth, pheight, plife);
 	}
-	static void isOnGround(){
+	static void BlockUpdater(){
 		//omg das isch ja so epic  //Lexu: wie meinsch das isch epic? was bringt de das jtz? its duäsch vo aunä entities alli wo instanceof player si i ä 'int' var?
 		for (Entity e : Entities){
 			if(e instanceof Player){
@@ -52,8 +52,7 @@ class Player extends Entity{
 					//ist Mario oberhalb des Blockes?
 					//Left ist perfekt anderes zeug überarbeiten
 					if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-d.height+GravityKraft && p.y <= d.y+GravityKraft){
-						println("Mario ist auf dem Block!");
-						
+						//println("Mario ist auf dem Block!");
 						Gravity = false;
 						if(PlayerMario.UpSpeed == false){
 							FramesBlocker = false;
@@ -61,13 +60,13 @@ class Player extends Entity{
 						break;
 					}
 					if(p.x >= d.x-p.width && p.x <= d.x+GravityKraft && p.y >= d.y-d.height && p.y <= d.y+d.height){
-						println("Mario Block Left");
+						//println("Mario Block Left");
 						p.x -= MovementMaxSpeed;
 						AnzahlFrames += 15;
 						break;
 					}
 					if(p.x >= d.x+d.width-GravityKraft && p.x <= d.x+d.width && p.y >= d.y-d.height && p.y <= d.y+d.height){
-						println("Mario Block Right");
+						//println("Mario Block Right");
 						p.x += MovementMaxSpeed;
 						AnzahlFrames += 15;
 						break;
@@ -75,10 +74,7 @@ class Player extends Entity{
 					if(Gravity == false){
 						if(p.x >= d.x-p.width+3 && p.x <= d.x+d.width-3 && p.y >= d.y+d.height && p.y <= d.y+d.height+GravityKraft){
 							println("Unterhalb des Blockes");
-							Gravity = false;
-							if(PlayerMario.UpSpeed == false){
-								FramesBlocker = false;
-							}
+							AnzahlFrames += 15;
 							Entities.remove(d);
 							break;
 						}	
