@@ -24,6 +24,7 @@ BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'
 BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'});
 //Destroyeble Block Elements
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 250, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
+DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 200, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
 //BlockElements Boden3 = new BlockElements(200, 100, 200, 50);
 
 
@@ -47,14 +48,13 @@ boolean LastPressed;
 boolean Fire = false;
 boolean FeuerBallRichtung;
 boolean debug = true;
-boolean Lexudebug = true;
 boolean GameIsLose = false;
 //boolean ObjectGravity = true; AnzahlFrames += 15;
 void setup(){
 	size(600, 500); // Grösse des Spielfeldes
 	frameRate( 40 ); // Bilderrate pro Sekunde 40
 	
-	//Spritebank.preloadImages();
+	Spritebank.preloadImages();
 	
 	//Loading pic's for the Aninmation and Movement
 	BlockTexture = loadImage("views/texture.jpg"); 
