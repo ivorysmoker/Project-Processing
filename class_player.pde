@@ -48,37 +48,35 @@ class Player extends Entity{
 		}
 		for (Entity d : Entities){
 			if(d instanceof DestroyableBlocksElements){
-				//50, 200, 25, 25
-					//ist Mario oberhalb des Blockes?
-					//Left ist perfekt anderes zeug überarbeiten
-					if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-d.height+GravityKraft && p.y <= d.y+GravityKraft){
-						//println("Mario ist auf dem Block!");
-						Gravity = false;
+				//50, 250, 25, 25 X Y width height
+				//println(p.x);
+				if(p.x+p.width >= d.x-MovementMaxSpeed && p.x+p.width <= d.x && p.y-p.height >= d.y-d.height-p.height && p.y-p.height <= d.y){
+					println("Left Blocker!");
+					p.x -= MovementMaxSpeed;
+					AnzahlFrames += 15;
+					break;
+				}
+				if(p.x >= d.x+d.height-MovementMaxSpeed && p.x <= d.x+d.height && p.y-p.height >= d.y-d.height-p.height && p.y-p.height <= d.y){
+					println("Right Blocker!");
+					p.x += MovementMaxSpeed;
+					AnzahlFrames += 15;
+					break;
+				}
+				if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-p.height && p.y <= d.y-GravityKraft){
+					println("Top Blocker!");
+					Gravity = false;
 						if(PlayerMario.UpSpeed == false){
 							FramesBlocker = false;
 						}
 						break;
-					}
-					if(p.x >= d.x-p.width && p.x <= d.x+GravityKraft && p.y >= d.y-d.height && p.y <= d.y+d.height){
-						//println("Mario Block Left");
-						p.x -= MovementMaxSpeed;
-						AnzahlFrames += 15;
-						break;
-					}
-					if(p.x >= d.x+d.width-GravityKraft && p.x <= d.x+d.width && p.y >= d.y-d.height && p.y <= d.y+d.height){
-						//println("Mario Block Right");
-						p.x += MovementMaxSpeed;
-						AnzahlFrames += 15;
-						break;
-					}
-					if(Gravity == false){
-						if(p.x >= d.x-p.width+3 && p.x <= d.x+d.width-3 && p.y >= d.y+d.height && p.y <= d.y+d.height+GravityKraft){
-							println("Unterhalb des Blockes");
-							AnzahlFrames += 15;
-							Entities.remove(d);
-							break;
-						}	
-					}
+				}
+				if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y && p.y <= d.y+p.height){
+					println("Destroy");
+					AnzahlFrames += 15;
+					Entities.remove(d);
+					break;
+				}
+					
 			}
 		}
 	}
@@ -153,7 +151,7 @@ class Player extends Entity{
 					FramesBlocker = true;
 				}
 				if(AnzahlFrames > (AnzahlFramesSpeicher+15)){
-					println("Frames wurde erreicht! Springen verboten!");
+					//println("Frames wurde erreicht! Springen verboten!");
 					if(this.RightSpeed == true){
 					image(jumpMario, this.x, this.y, this.width, this.height);
 					}else if(this.LeftSpeed == true){
@@ -168,7 +166,7 @@ class Player extends Entity{
 					//Blocke das Springen
 					this.UpSpeed = false;
 				}else{
-					println(JumpOptik);
+					//println(JumpOptik);
 						this.y -= 4;
 
 				AnzahlFrames++;
