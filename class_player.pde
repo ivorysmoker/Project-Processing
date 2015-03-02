@@ -27,30 +27,25 @@ class Player extends Entity{
 				Player p = e;
 			}
 		}
-		if(p.x > 300 && p.RightSpeed == true){
+		if(p.x >= 295 && p.x <= 300+MovementMaxSpeed && p.RightSpeed == true){
+			println(p.x);
 			p.x -= MovementMaxSpeed;
 			//TrackerActive = true;
 			for (Entity e : Entities){
 				//verschiebe alle Map Objekte 
-				if(e instanceof BlockElements){
+				//Verkürzung !instanceof möglich? 
+				if(e instanceof BlockElements || e instanceof DestroyableBlocksElements || e instanceof Enemy){
 					e.x -= MovementMaxSpeed;
 				}
-				if(e instanceof DestroyableBlocksElements){
-					e.x -= MovementMaxSpeed;
-				}
-				
 			}
 			println("Mario beginnen Tracking");
 		}
-		if(p.x < 300 && p.LeftSpeed == true){
+		if(p.x >= 290-MovementMaxSpeed && p.x < 290 && p.LeftSpeed == true){
 			//TrackerActive = true;
 			p.x += MovementMaxSpeed;
 			for (Entity e : Entities){
 				//verschiebe alle Map Objekte 
-				if(e instanceof BlockElements){
-					e.x += MovementMaxSpeed;
-				}
-				if(e instanceof DestroyableBlocksElements){
+				if(e instanceof BlockElements || e instanceof DestroyableBlocksElements || e instanceof Enemy){
 					e.x += MovementMaxSpeed;
 				}
 				
@@ -176,12 +171,18 @@ class Player extends Entity{
 		}
 		//Links
 		if(this.LeftSpeed == true){
+			if(this.x <= 0){
+				this.x = 0;
+				frame2 = (frame2+1)%numFrames2; 
+				image(images2[frame2], this.x, this.y, this.width, this.height);
+			}else{
 			this.x -= MovementMaxSpeed;
 				if(this.UpSpeed == false){
 					//Animation
 					frame2 = (frame2+1)%numFrames2; 
 					image(images2[frame2], this.x, this.y, this.width, this.height);
 				}
+			}
 		}
 		//Nac
 		if(this.UpSpeed == true){
