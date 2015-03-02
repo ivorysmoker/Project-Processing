@@ -112,6 +112,7 @@ void draw(){
 	//BlockElements.Collision(); // Aktiviere Player Kollision
 	//Player.TestingSuperClass();
 	Entity.draw(); // Render Enemy and Player
+	Player.Tracker();
 	}
 }
 void keyPressed() {

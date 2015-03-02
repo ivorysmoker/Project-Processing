@@ -8,15 +8,54 @@ class Player extends Entity{
 	RightSpeed = false, //Keyevent trigger
 	UpSpeed = false;
 	int Life;
+	int Coins;
 	Player(int px, int py, int pwidth, int pheight, String[] ptexture, int plife){
 		super(px, py, pwidth, pheight, ptexture);
 		/*x = px;
 		y = py;
 		width = pwidth;
 		height = pheight;*/
+		Coins = 0;
 		Life = plife;
 		//Wenn mann hier die Super Klasse läd, wird die Breite und Höhe des Mario's nicht übernommen.
 		//super(px, py, pwidth, pheight, plife);
+	}
+	static void Tracker(){
+		//Tracker BETA
+		for (Entity e : Entities){
+			if(e instanceof Player){
+				Player p = e;
+			}
+		}
+		if(p.x > 300 && p.RightSpeed == true){
+			p.x -= MovementMaxSpeed;
+			//TrackerActive = true;
+			for (Entity e : Entities){
+				//verschiebe alle Map Objekte 
+				if(e instanceof BlockElements){
+					e.x -= MovementMaxSpeed;
+				}
+				if(e instanceof DestroyableBlocksElements){
+					e.x -= MovementMaxSpeed;
+				}
+				
+			}
+			println("Mario beginnen Tracking");
+		}
+		if(p.x < 300 && p.LeftSpeed == true){
+			//TrackerActive = true;
+			p.x += MovementMaxSpeed;
+			for (Entity e : Entities){
+				//verschiebe alle Map Objekte 
+				if(e instanceof BlockElements){
+					e.x += MovementMaxSpeed;
+				}
+				if(e instanceof DestroyableBlocksElements){
+					e.x += MovementMaxSpeed;
+				}
+				
+			}
+		}
 	}
 	static void BlockUpdater(){
 		//omg das isch ja so epic  //Lexu: wie meinsch das isch epic? was bringt de das jtz? its duäsch vo aunä entities alli wo instanceof player si i ä 'int' var?
@@ -51,19 +90,19 @@ class Player extends Entity{
 				//50, 250, 25, 25 X Y width height
 				//println(p.x);
 				if(p.x+p.width >= d.x-MovementMaxSpeed && p.x+p.width <= d.x && p.y-p.height >= d.y-d.height-p.height && p.y-p.height <= d.y){
-					println("Left Blocker!");
+					//println("Left Blocker!");
 					p.x -= MovementMaxSpeed;
 					AnzahlFrames += 15;
 					break;
 				}
 				if(p.x >= d.x+d.height-MovementMaxSpeed && p.x <= d.x+d.height && p.y-p.height >= d.y-d.height-p.height && p.y-p.height <= d.y){
-					println("Right Blocker!");
+					//println("Right Blocker!");
 					p.x += MovementMaxSpeed;
 					AnzahlFrames += 15;
 					break;
 				}
 				if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-p.height && p.y <= d.y-GravityKraft){
-					println("Top Blocker!");
+					//println("Top Blocker!");
 					Gravity = false;
 						if(PlayerMario.UpSpeed == false){
 							FramesBlocker = false;
@@ -71,8 +110,9 @@ class Player extends Entity{
 						break;
 				}
 				if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y && p.y <= d.y+p.height){
-					println("Destroy");
+					//println("Destroy");
 					AnzahlFrames += 15;
+					DestroyableBlocksElements.AddCoins();
 					Entities.remove(d);
 					break;
 				}
