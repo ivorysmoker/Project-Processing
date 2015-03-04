@@ -1,5 +1,5 @@
 //Create all object's
-Player PlayerMario = new Player(5, 200, 14, 20, {'standingMario.gif'}, 3);
+Player PlayerMario = new Player(5, 200, 14, 20, {'standingMario.gif'}, 1);
 //Animation Stuff
 int numFrames = 4;  // The number of frames in the animation
 int frame = 0;
@@ -22,6 +22,9 @@ private int AnzahlObjekte = 0;
 BlockElements Boden = new BlockElements(0, 300, 400, 10, {'views/texture.jpg'}); // X / Y / Länge / Höhe
 BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'});
 BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'});
+BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'});
+BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'});
+BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'});
 //Destroyeble Block Elements
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 250, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 200, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');

@@ -67,7 +67,8 @@ class Player extends Entity{
 					//Sowie besser hinterlegen, update funktion integrieren! + return maybe epic /boolean nicht vergessen statt void
 					//lauf bug, der mario wird immer hochgedrückt. Lexu noch fragen wo der code integriert wurde.
 					Gravity = false;
-					if(PlayerMario.UpSpeed == false){
+					//delay a little bit?
+					if(p.UpSpeed == false){
 						FramesBlocker = false;
 					}
 					p.y = b.y-p.height;
@@ -186,6 +187,7 @@ class Player extends Entity{
 		}
 		//Nac
 		if(this.UpSpeed == true){
+			println("Sprung!");
 				if(FramesBlocker == false){
 					AnzahlFrames = frameCount;
 					AnzahlFramesSpeicher = frameCount;
