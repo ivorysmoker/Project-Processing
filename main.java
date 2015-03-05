@@ -20,13 +20,14 @@ private int AnzahlFire = 0;
 private int AnzahlEnemy = 0;
 private int AnzahlObjekte = 0;
 //Block Elements
-BlockElements Boden = new BlockElements(0, 300, 400, 10, {'views/texture.jpg'}, false, false); // X / Y / Länge / Höhe
-BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'}, false, false);
-BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, false);
-BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, false);
-BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, false);
-BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'}, false, false);
-BlockElements FallenderBoden = new BlockElements(200, 100, 50, 50, {'views/texture.jpg'}, true, true);
+BlockElements Boden = new BlockElements(0, 300, 400, 10, {'views/texture.jpg'}, false, 0, false ,false); // X / Y / Länge / Höhe
+BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'}, false, 0, false ,false);
+BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, 0, false ,false);
+BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, 0, false ,false);
+BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, 0, false ,false);
+BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'}, false, 0, false ,false);
+BlockElements FallingGroundDMG = new BlockElements(200, 100, 50, 50, {'views/texture.jpg'}, true, 7, false, true);
+BlockElements FallingGroundNone = new BlockElements(300, 100, 20, 20, {'views/texture.jpg'}, true, 3, true, false);
 //Destroyeble Block Elements
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 250, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 200, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');

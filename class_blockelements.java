@@ -4,11 +4,15 @@ class BlockElements extends Entity{
 	//Konstuktor breite - höhe - länge - höhe
 	static ArrayList FallingBlocks = new ArrayList();
 	boolean Falling,
-	Damage;
-	BlockElements(int bx, int by, int bwidth, int bheight, String btexture, boolean bFalling, boolean bMakeDamage){
+	Damage,
+	FallingTrigger;
+	int FallingSpeed;
+	BlockElements(int bx, int by, int bwidth, int bheight, String btexture, boolean bFalling, int bSpeed, boolean bTrigger, boolean bMakeDamage){
 		super(bx, by, bwidth, bheight, btexture);
 		Falling = bFalling;
 		Damage = bMakeDamage;
+		FallingSpeed = bSpeed;
+		FallingTrigger = bTrigger;
 		/*id = AnzahlObjekte;
 		x = bx;
 		y = by;
@@ -30,12 +34,22 @@ class BlockElements extends Entity{
 		}
 		for (Entity e : Entities){
 			if(e instanceof BlockElements){
-				if(p.x >= e.x && p.x <= e.x+e.width){
+				if(e.FallingTrigger == true){
 					if(FallingBlocks.contains(e)){
-						break;
-					}else{
-						if(e.Falling){
-						FallingBlocks.add(e);
+							break;
+						}else{
+							if(e.Falling){
+							FallingBlocks.add(e);
+							}
+						}
+				}else{
+					if(p.x >= e.x && p.x <= e.x+e.width){
+						if(FallingBlocks.contains(e)){
+							break;
+						}else{
+							if(e.Falling){
+							FallingBlocks.add(e);
+							}
 						}
 					}
 				}
@@ -49,7 +63,7 @@ class BlockElements extends Entity{
 			}
 		}
 		for(BlockElements d : FallingBlocks){
-			d.y += 6;
+			d.y += d.FallingSpeed;
 			//Damage or noth , if mario on under the objekt then kill him
 			image(BlockTexture, d.x, d.y , d.width, d.height);
 			if(d.Damage){
