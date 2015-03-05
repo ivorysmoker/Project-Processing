@@ -1,3 +1,4 @@
+//merge test
 //Create all object's
 Player PlayerMario = new Player(5, 200, 14, 20, {'standingMario.gif'}, 1);
 //Animation Stuff
