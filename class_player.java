@@ -192,6 +192,7 @@ class Player extends Entity{
 					AnzahlFrames = frameCount;
 					AnzahlFramesSpeicher = frameCount;
 					FramesBlocker = true;
+					Gravity = GravityKraft;
 				}
 				if(AnzahlFrames > (AnzahlFramesSpeicher+15)){
 					//println("Frames wurde erreicht! Springen verboten!");

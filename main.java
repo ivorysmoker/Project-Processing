@@ -107,6 +107,7 @@ void draw(){
 	}
 	if(Gravity == true){
 		PlayerMario.y += GravityKraft;
+		GravityKraft += 0.01;
 	}
 	//Spritebank.testdraw();
 	Enemy.update();
