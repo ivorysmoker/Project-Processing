@@ -24,25 +24,11 @@ class Entity{
 			    image(Koopa, e.x, e.y, e.width, e.height);
 			}
 			if(e instanceof Player){
-					if(e.UpSpeed == true){
-						if(e.RightSpeed == true){
-						image(jumpMario, e.x, e.y, e.width, e.height);
-						}else if(e.LeftSpeed == true){
-							image(jumpMarioLeft, e.x, e.y, e.width, e.height);	
-						}else{
-							if(LastPressed = true){
-								image(jumpMario, e.x, e.y, e.width, e.height);	
-							}else{
-								image(jumpMarioLeft, e.x, e.y, e.width, e.height);	
-							}
-					}
-					}else{
 					if(e.RightSpeed == false && e.LeftSpeed == false && e.UpSpeed == false || e.RightSpeed == true && e.LeftSpeed == true){
 						if(e.LeftSpeed == true || LastPressed == true){
 							image(images2[3], e.x, e.y, e.width, e.height);		
 						}else if(e.RightSpeed == true || LastPressed == false){
 							image(images[3], e.x, e.y, e.width, e.height);
-						}
 					}
 				}
 			}
