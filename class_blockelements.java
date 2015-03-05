@@ -30,13 +30,12 @@ class BlockElements extends Entity{
 		}
 		for (Entity e : Entities){
 			if(e instanceof BlockElements){
-				if(p.x == e.x){
+				if(p.x >= e.x && p.x <= e.x+e.width){
 					if(FallingBlocks.contains(e)){
 						break;
 					}else{
 						if(e.Falling){
 						FallingBlocks.add(e);
-												println("Block added");
 						}
 					}
 				}
@@ -50,8 +49,16 @@ class BlockElements extends Entity{
 			}
 		}
 		for(BlockElements d : FallingBlocks){
-			d.y += 5;
+			d.y += 6;
+			//Damage or noth , if mario on under the objekt then kill him
 			image(BlockTexture, d.x, d.y , d.width, d.height);
+			if(p.x >= e.x && p.x <= d.x+d.width && p.y >= d.y && p.y <= d.y+d.height){
+				GameIsLose = true;
+				image(gameover, 0, 0, 600, 500);
+			}			
+			if(d.y > 500){
+				FallingBlocks.remove(d);
+			}
 		}
 	}
 }
