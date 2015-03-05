@@ -52,7 +52,7 @@ class BlockElements extends Entity{
 			d.y += 6;
 			//Damage or noth , if mario on under the objekt then kill him
 			image(BlockTexture, d.x, d.y , d.width, d.height);
-			if(p.x >= e.x && p.x <= d.x+d.width && p.y >= d.y && p.y <= d.y+d.height){
+			if(p.x >= d.x && p.x <= d.x+d.width && p.y >= d.y && p.y <= d.y+d.height){
 				GameIsLose = true;
 				image(gameover, 0, 0, 600, 500);
 			}			
