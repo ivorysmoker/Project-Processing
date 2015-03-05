@@ -20,14 +20,15 @@ private int AnzahlFire = 0;
 private int AnzahlEnemy = 0;
 private int AnzahlObjekte = 0;
 //Block Elements
-BlockElements Boden = new BlockElements(0, 300, 400, 10, {'views/texture.jpg'}, false, 0, false ,false); // X / Y / Länge / Höhe
-BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'}, false, 0, false ,false);
-BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, 0, false ,false);
-BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, 0, false ,false);
-BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, 0, false ,false);
-BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'}, false, 0, false ,false);
-BlockElements FallingGroundDMG = new BlockElements(200, 100, 50, 50, {'views/texture.jpg'}, true, 7, false, true);
-BlockElements FallingGroundNone = new BlockElements(300, 100, 20, 20, {'views/texture.jpg'}, true, 3, true, false);
+BlockElements Boden = new BlockElements(0, 300, 300, 10, {'views/texture.jpg'}, false, 0, false, false ,false); // X / Y / Länge / Höhe
+BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements FallingGroundDMG = new BlockElements(200, 100, 50, 50, {'views/texture.jpg'}, true, 7, false, false ,true);
+BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(710, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
 //Destroyeble Block Elements
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 250, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 200, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
@@ -40,7 +41,6 @@ Enemy K = new Enemy(150, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.pn
 //Enemy Koopa2 = new Enemy(275, 25); // X + Y Spawnpoint
 //Enemy Koopa3 = new Enemy(400, 30); // X + Y Spawnpoint
 //Anziehungskraft
-
 private boolean Gravity = true;
 private boolean EnemyGravity = true;
 final private byte GravityKraft = 5;
@@ -87,7 +87,6 @@ void setup(){
 	
 	if (debug) {noLoop();}
 }
-
 void draw(){
 	if(GameIsLose == true){
 		//open the Game Settings
@@ -123,9 +122,9 @@ void draw(){
 	Entity.draw(); // Render Enemy and Player
 	Player.Tracker();
 	
-	//Dynamic Stuff
 	BlockElements.BlockTrigger();
 	BlockElements.BlockFalling();
+	
 	}
 }
 void keyPressed() {

@@ -5,14 +5,16 @@ class BlockElements extends Entity{
 	static ArrayList FallingBlocks = new ArrayList();
 	boolean Falling,
 	Damage,
-	FallingTrigger;
+	FallingTrigger,
+	Respawn;
 	int FallingSpeed;
-	BlockElements(int bx, int by, int bwidth, int bheight, String btexture, boolean bFalling, int bSpeed, boolean bTrigger, boolean bMakeDamage){
+	BlockElements(int bx, int by, int bwidth, int bheight, String btexture, boolean bFalling, int bSpeed, boolean bTrigger, boolean bRespawn, boolean bMakeDamage){
 		super(bx, by, bwidth, bheight, btexture);
 		Falling = bFalling;
 		Damage = bMakeDamage;
 		FallingSpeed = bSpeed;
 		FallingTrigger = bTrigger;
+		Respawn = bRespawn;
 		/*id = AnzahlObjekte;
 		x = bx;
 		y = by;
@@ -63,17 +65,25 @@ class BlockElements extends Entity{
 			}
 		}
 		for(BlockElements d : FallingBlocks){
-			d.y += d.FallingSpeed;
-			//Damage or noth , if mario on under the objekt then kill him
-			image(BlockTexture, d.x, d.y , d.width, d.height);
-			if(d.Damage){
-				if(p.x+p.width >= d.x && p.x <= d.x+d.width && p.y >= d.y && p.y <= d.y+d.height){
-					GameIsLose = true;
-					image(gameover, 0, 0, 600, 500);
+			if(d instanceof BlockElements){
+				d.y += d.FallingSpeed;
+				//Damage or noth , if mario on under the objekt then kill him
+				image(BlockTexture, d.x, d.y , d.width, d.height);
+				if(d.y == 500){
+					if(d.Respawn){
+						d.y = 0-d.height;	
+					}else{
+					FallingBlocks.remove(d);
+					}
+					
+					println("Remove this");
 				}
-			}			
-			if(d.y > 500){
-				FallingBlocks.remove(d);
+				if(d.Damage){
+					if(p.x+p.width >= d.x && p.x <= d.x+d.width && p.y >= d.y && p.y <= d.y+d.height){
+						GameIsLose = true;
+						image(gameover, 0, 0, 600, 500);
+					}
+				}			
 			}
 		}
 	}
