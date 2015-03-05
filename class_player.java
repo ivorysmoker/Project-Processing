@@ -206,6 +206,7 @@ class Player extends Entity{
 							image(jumpMarioLeft, this.x, this.y, this.width, this.height);	
 						}
 					}
+					Gravity = true;
 					//Blocke das Springen
 					this.UpSpeed = false;
 				}else{
