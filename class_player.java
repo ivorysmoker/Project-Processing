@@ -186,7 +186,7 @@ class Player extends Entity{
 			}
 		}
 		//Nac
-		if(this.UpSpeed == true){
+		if(this.UpSpeed == true && Gravity == false){
 			println("Sprung!");
 				if(FramesBlocker == false){
 					AnzahlFrames = frameCount;
