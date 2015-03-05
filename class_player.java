@@ -28,27 +28,19 @@ class Player extends Entity{
 			}
 		}
 		if(p.x >= 295 && p.x <= 300+MovementMaxSpeed && p.RightSpeed == true){
-			println(p.x);
 			p.x -= MovementMaxSpeed;
-			//TrackerActive = true;
 			for (Entity e : Entities){
-				//verschiebe alle Map Objekte 
-				//Verkürzung !instanceof möglich? 
 				if(e instanceof BlockElements || e instanceof DestroyableBlocksElements || e instanceof Enemy){
 					e.x -= MovementMaxSpeed;
 				}
 			}
-			println("Mario beginnen Tracking");
 		}
 		if(p.x >= 290-MovementMaxSpeed && p.x < 290 && p.LeftSpeed == true){
-			//TrackerActive = true;
 			p.x += MovementMaxSpeed;
 			for (Entity e : Entities){
-				//verschiebe alle Map Objekte 
 				if(e instanceof BlockElements || e instanceof DestroyableBlocksElements || e instanceof Enemy){
 					e.x += MovementMaxSpeed;
 				}
-				
 			}
 		}
 	}
@@ -67,6 +59,7 @@ class Player extends Entity{
 					//Sowie besser hinterlegen, update funktion integrieren! + return maybe epic /boolean nicht vergessen statt void
 					//lauf bug, der mario wird immer hochgedrückt. Lexu noch fragen wo der code integriert wurde.
 					Gravity = false;
+					GravityKraft = 5;
 					//delay a little bit?
 					if(p.UpSpeed == false){
 						FramesBlocker = false;
@@ -100,6 +93,7 @@ class Player extends Entity{
 				if(p.x >= d.x-p.width && p.x <= d.x+d.width && p.y >= d.y-p.height && p.y <= d.y-GravityKraft){
 					//println("Top Blocker!");
 					Gravity = false;
+					//GravityKraft = 5;
 						if(PlayerMario.UpSpeed == false){
 							FramesBlocker = false;
 						}
@@ -192,7 +186,6 @@ class Player extends Entity{
 					AnzahlFrames = frameCount;
 					AnzahlFramesSpeicher = frameCount;
 					FramesBlocker = true;
-					Gravity = GravityKraft;
 				}
 				if(AnzahlFrames > (AnzahlFramesSpeicher+15)){
 					//println("Frames wurde erreicht! Springen verboten!");
@@ -211,7 +204,6 @@ class Player extends Entity{
 					//Blocke das Springen
 					this.UpSpeed = false;
 				}else{
-					//println(JumpOptik);
 					if(AnzahlFrames > (AnzahlFramesSpeicher+4) && AnzahlFrames < (AnzahlFramesSpeicher+5)){
 						this.y -= 3;
 					}else if(AnzahlFrames > (AnzahlFramesSpeicher+8)){

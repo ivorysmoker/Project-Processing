@@ -107,7 +107,9 @@ void draw(){
 	}
 	if(Gravity == true){
 		PlayerMario.y += GravityKraft;
-		GravityKraft += 0.01;
+		GravityKraft += 0.5;
+		//Gravity wird ausgeführt obwohl sie off gestellt wurde?^^
+		println(GravityKraft);
 	}
 	//Spritebank.testdraw();
 	Enemy.update();
