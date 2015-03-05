@@ -211,8 +211,13 @@ class Player extends Entity{
 					this.UpSpeed = false;
 				}else{
 					//println(JumpOptik);
+					if(AnzahlFrames > (AnzahlFramesSpeicher+4) && AnzahlFrames < (AnzahlFramesSpeicher+5)){
+						this.y -= 3;
+					}else if(AnzahlFrames > (AnzahlFramesSpeicher+8)){
+						this.y -= 2;
+					}else{
 						this.y -= 4;
-
+					}
 				AnzahlFrames++;
 				JumpOptik++;
 				if(this.RightSpeed == true){
