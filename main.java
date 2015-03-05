@@ -1,4 +1,4 @@
-//merge test
+Spritebank lexusp;
 //Create all object's
 Player PlayerMario = new Player(5, 200, 14, 20, {'standingMario.gif'}, 1);
 //Animation Stuff
@@ -58,7 +58,7 @@ void setup(){
 	size(600, 500); // Grösse des Spielfeldes
 	frameRate( 40 ); // Bilderrate pro Sekunde 40
 	
-	//Spritebank.preloadImages();
+	
 	
 	//Loading pic's for the Aninmation and Movement
 	BlockTexture = loadImage("views/texture.jpg"); 
@@ -82,11 +82,22 @@ void setup(){
     images3[1]  = loadImage("views/Feuerball2.png");
 	images3[2]  = loadImage("views/Feuerball3.png");
 	
+	Spritebank.preloadImages();
+	lexusp = new Spritebank('TestSP1');
+	println('sp has following animations:');
+	for(String s : lexusp.getAnimationList()){
+		println(s);
+	}
+	
+	
+	
 	
 	if (debug) {noLoop();}
 }
 
 void draw(){
+	image(lexusp.getFrame(),200,200,200,200);
+	/*
 	if(GameIsLose == true){
 		//open the Game Settings
 	}else{
@@ -108,17 +119,18 @@ void draw(){
 	if(Gravity == true){
 		PlayerMario.y += GravityKraft;
 	}
-	//Spritebank.testdraw();
+	
+	
 	Enemy.update();
 	Player.BlockUpdater();
 	PlayerMario.Movement(); // Keys Event's - Movement
 	PlayerMario.PlayerDie(); //Player Mario Die
-	//BlockElements.Collision(); // Aktiviere Player Kollision
-	//Player.TestingSuperClass();
+	    //BlockElements.Collision(); // Aktiviere Player Kollision
+	    //Player.TestingSuperClass();
 	Entity.draw(); // Render Enemy and Player
 	Player.Tracker();
 	}
-}
+*/}
 void keyPressed() {
  
   if (key == 'j' || key == 'J') {

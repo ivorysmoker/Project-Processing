@@ -4,18 +4,19 @@ class Spritebank{
 	
 	
 	// --- obj fields
-	private HashMap<String,PImage[]> animations;
+	private HashMap<String,ArrayList<PImage>> animations;
 	private String name,currentAnimation;
 	private int width,height,currentAnimationIndex,skipedFrames;
 	
 	// --- constructor
 	Spritebank(String spname){
 		if(Spritebank.SpriteBanks.containsKey(spname)){
-			this.name = 'missingSprite';
-		}
-		else{
 			this.name = spname;
 		}
+		else{
+			this.name = 'missingSprite';
+		}
+		println('name of requested sp: ' + this.name);
 		this.animations = Spritebank.SpriteBanks.get(this.name);
 		this.currentAnimation = this.animations.keySet().toArray()[0];
 		this.width = this.animations.get(this.currentAnimation).width;
@@ -30,28 +31,29 @@ class Spritebank{
 		if (debug){println('Preloading all Sprites');}
 		String lines[] = loadStrings("spritebanks.txt");
 		for (String l : lines) {
-			if (Lexudebug){println('working on line : ' + l);}
+			if (debug){println('working on line : ' + l);}
 			Sting[] spProperties = l.split(';',-1);
 			PImage spImage = loadImage('graphics/spritebanks/' + spProperties[0]);
 			Sting spName = spProperties[1];
 			int yOffset = 0;
 			Sting[]	animationDiscriptions = spProperties[2].split(':',-1);
 			HashMap<String,AnimationSet> AnimationSets = new HashMap<String,AnimationSet>();
-			if (Lexudebug){println('path : graphics/spritebanks/' + spProperties[0] + '   name : ' + spProperties[1] + '   otherstuff : ' + spProperties[2]);}
+			if (debug){println('path : graphics/spritebanks/' + spProperties[0] + '   name : ' + spProperties[1] + '   otherstuff : ' + spProperties[2]);}
 			for(String aD : animationDiscriptions){
 				println('working on a Discription: ' + aD);
 				String[] animationProperties = aD.split('-',-1);
 				String animationName =  animationProperties[0];
 				int frameCount =  animationProperties[1],
 					frameSkip = animationProperties[2],
-					frameWidth = animationProperties[3],    //chani no chürzä wenns überhoupt geit funktioniert
+					frameWidth = animationProperties[3],
 					frameHeight = animationProperties[4];
-				PImage[] animationImageSet;
+				ArrayList<PImage> animationImageSet = new ArrayList(frameCount);
+				println('init array done');
 				for(int index = 0 ; index < frameCount; index++){
-					animationImageSet[animationImageSet.length] = spImage.get(index*frameWidth,yOffset,frameWidth,frameHeight);  // darn it... ig bi nid sicher obs so stimmt.. isch mir eifach no grad i sinn cho das es so eh fail isch gsi 
-					println(index);
+					animationImageSet.add(spImage.get(index*frameWidth,yOffset,frameWidth,frameHeight));
+					println('ay ' + index);
 				}
-				yOffset += frameWidth;
+				yOffset += frameHeight;
 				AnimationSet as = new AnimationSet(frameWidth,frameHeight,frameSkip,animationImageSet);
 				AnimationSets.put(animationName,as);
 				println('name :' + animationName);
@@ -60,16 +62,12 @@ class Spritebank{
 		}
 	}
 	
-	public static void testdraw(){
-		println(Spritebank.SpriteBanks.get('name2').get('name2animationname2').width);
-	}
-	
 	// obj methods
 	public void nextFrame(){
 		if(this.skipedFrames >= this.animations.get(this.currentAnimation).frameSkip){
 			this.skipedFrames = 0;
 			this.currentAnimationIndex++;
-			if(this.currentAnimationIndex >= this.animations.get(this.currentAnimation).AnimationSetImages.length){
+			if(this.currentAnimationIndex >= this.animations.get(this.currentAnimation).AnimationSetImages.size()){
 				this.currentAnimation = 0;
 			}
 		}
@@ -83,7 +81,7 @@ class Spritebank{
 			this.skipedFrames = 0;
 			this.currentAnimationIndex--;
 			if(this.currentAnimationIndex > 0){
-				this.currentAnimation = this.animations.get(this.currentAnimation).AnimationSetImages.length-1;
+				this.currentAnimation = this.animations.get(this.currentAnimation).AnimationSetImages.size()-1;
 			}
 		}
 		else{
@@ -109,16 +107,17 @@ class Spritebank{
 	public Set<String> getAnimationList(){
 		return this.animations.keySet();
 	}
-	public PImage draw(){
-		return this.animations.get(this.currentAnimation).AnimationSetImages[this.currentAnimationIndex];
+	public PImage getFrame(){
+		//return this.animations.get(this.currentAnimation).AnimationSetImages.get(this.currentAnimationIndex);
+		return this.animations.get('IDLE').AnimationSetImages.get(0);
 	}
 }
 
 	// this class is used to store diffrent datatypes under one roof.
 class AnimationSet{
 	int width,height,frameSkip;
-	PImage[] AnimationSetImages;
-	AnimationSet(int w,int h,int fS,PImage[] ASI){
+	ArrayList<PImage> AnimationSetImages;
+	AnimationSet(int w,int h,int fS,ArrayList<PImage> ASI){
 		width = w;
 		height = h;
 		frameSkip = fS;
