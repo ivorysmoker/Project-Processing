@@ -20,12 +20,13 @@ private int AnzahlFire = 0;
 private int AnzahlEnemy = 0;
 private int AnzahlObjekte = 0;
 //Block Elements
-BlockElements Boden = new BlockElements(0, 300, 400, 10, {'views/texture.jpg'}); // X / Y / Länge / Höhe
-BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'});
-BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'});
-BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'});
-BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'});
-BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'});
+BlockElements Boden = new BlockElements(0, 300, 400, 10, {'views/texture.jpg'}, false, false); // X / Y / Länge / Höhe
+BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'}, false, false);
+BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, false);
+BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, false);
+BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, false);
+BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'}, false, false);
+BlockElements FallenderBoden = new BlockElements(200, 100, 50, 50, {'views/texture.jpg'}, true, true);
 //Destroyeble Block Elements
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 250, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 200, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
@@ -109,7 +110,7 @@ void draw(){
 		PlayerMario.y += GravityKraft;
 		GravityKraft += 0.5;
 		//Gravity wird ausgeführt obwohl sie off gestellt wurde?^^
-		println(GravityKraft);
+		//println(GravityKraft);
 	}
 	//Spritebank.testdraw();
 	Enemy.update();
@@ -120,6 +121,10 @@ void draw(){
 	//Player.TestingSuperClass();
 	Entity.draw(); // Render Enemy and Player
 	Player.Tracker();
+	
+	//Dynamic Stuff
+	BlockElements.BlockTrigger();
+	BlockElements.BlockFalling();
 	}
 }
 void keyPressed() {

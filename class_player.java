@@ -94,6 +94,7 @@ class Player extends Entity{
 					//println("Top Blocker!");
 					Gravity = false;
 					//GravityKraft = 5;
+					p.y = d.y-p.height;
 						if(PlayerMario.UpSpeed == false){
 							FramesBlocker = false;
 						}
@@ -181,7 +182,6 @@ class Player extends Entity{
 		}
 		//Nac
 		if(this.UpSpeed == true && Gravity == false){
-			println("Sprung!");
 				if(FramesBlocker == false){
 					AnzahlFrames = frameCount;
 					AnzahlFramesSpeicher = frameCount;
