@@ -1,4 +1,5 @@
 Spritebank lexusp;
+PImage lexutestimg;
 //Create all object's
 Player PlayerMario = new Player(5, 200, 14, 20, {'standingMario.gif'}, 1);
 //Animation Stuff
@@ -88,7 +89,7 @@ void setup(){
 	for(String s : lexusp.getAnimationList()){
 		println(s);
 	}
-	
+	//lexutestimg = lexusp.getFrame();
 	
 	
 	
@@ -96,7 +97,9 @@ void setup(){
 }
 
 void draw(){
-	image(lexusp.getFrame(),200,200,200,200);
+	println('h : ' + lexutestimg.height);
+	println(lexutestimg.pixels);
+	image(lexutestimg,200,200,200,200);
 	/*
 	if(GameIsLose == true){
 		//open the Game Settings
