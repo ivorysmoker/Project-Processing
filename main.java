@@ -41,21 +41,22 @@ boolean GameIsLose = false;
 void setup(){
 	size(600, 500); // Grösse des Spielfeldes
 	frameRate( 40 ); // Bilderrate pro Sekunde 40
-BlockElements Boden = new BlockElements(0, 300, 300, 10, {'views/texture.jpg'}, false, 0, false, false ,false); // X / Y / Länge / Höhe
-BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
-BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
-BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
-BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
-BlockElements Boden3 = new BlockElements(800, 205, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden = new BlockElements(0, 300, 300, 10, {'views/texture.jpg'}, 'views/boden.png', false, 0, false, false ,false); // X / Y / Länge / Höhe
+BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'},'views/boden.png', false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'},'views/boden.png', false, 0, false, false ,false);
+BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'},'views/boden.png', false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'},'views/boden.png', false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(800, 205, 100, 10, {'views/texture.jpg'},'views/boden.png', false, 0, false, false ,false);
 
-BlockElements Bodenstatic = new BlockElements(180, 150, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,true);
+BlockElements Bodenstatic = new BlockElements(180, 150, 100, 10, {'views/texture.jpg'},'views/boden.png', false, 0, false, false ,true);
 
-BlockElements FallingGroundDMG = new BlockElements(200, 100, 100, 20, {'views/falling.png'}, true, 7, false, false ,true);
-BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
-BlockElements FallingGroundNone = new BlockElements(310, -100, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
-BlockElements FallingGroundNone = new BlockElements(310, -190, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
-BlockElements FallingGroundNone = new BlockElements(310, -270, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
-BlockElements FallingGroundNone = new BlockElements(710, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundDMG = new BlockElements(200, 0, 100, 20, {'views/falling.png'},'views/falling.png', true, 8, false, false ,true);
+
+BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'},'views/texture.jpg', true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -100, 50, 10, {'views/texture.jpg'},'views/texture.jpg', true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -190, 50, 10, {'views/texture.jpg'},'views/texture.jpg', true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -270, 50, 10, {'views/texture.jpg'},'views/texture.jpg', true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(710, -10, 50, 10, {'views/texture.jpg'},'views/texture.jpg', true, 1, true, true, false);
 //Destroyeble Block Elements
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 240, 20, 20, {'views/texture.jpg'}, 'NoLoot', 'Event');
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 190, 20, 20, {'views/texture.jpg'}, 'NoLoot', 'Event');
@@ -69,6 +70,7 @@ Enemy K = new Enemy(150, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.pn
 	
 	//Loading pic's for the Aninmation and Movement
 	BlockTexture = loadImage("views/texture.jpg"); 
+	BlocksBoden = loadImage("views/boden.png"); 
 	FallingB = loadImage("views/falling.png"); 
 	standingMario = loadImage("views/Running-mario4.gif");  
 	jumpMario = loadImage("views/Jumping-mario.gif");
@@ -97,8 +99,9 @@ Enemy K = new Enemy(150, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.pn
 void draw(){
 	if(GameIsLose == true){
 		//open the Game Settings
+		
 		setup(); // reset the game datas
-		GameIsLose = false;
+		StageLoader(); // doenst work
 	}else{
 	background(255, 204, 0); // Überdeckt das gezeichnete
 	background(bg);
@@ -233,4 +236,30 @@ void keyReleased() {
 			}
 		
 	}
+}
+void StageLoader(){
+BlockElements Boden = new BlockElements(0, 300, 300, 10, {'views/texture.jpg'}, false, 0, false, false ,false); // X / Y / Länge / Höhe
+BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(800, 205, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+
+BlockElements Bodenstatic = new BlockElements(180, 150, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,true);
+
+BlockElements FallingGroundDMG = new BlockElements(200, 100, 100, 20, {'views/falling.png'}, true, 7, false, false ,true);
+BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -100, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -190, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -270, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(710, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+//Destroyeble Block Elements
+DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 240, 20, 20, {'views/texture.jpg'}, 'NoLoot', 'Event');
+DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 190, 20, 20, {'views/texture.jpg'}, 'NoLoot', 'Event');
+//BlockElements Boden3 = new BlockElements(200, 100, 200, 50);
+
+
+//Enemys
+Enemy K = new Enemy(250, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
+Enemy K = new Enemy(150, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
 }

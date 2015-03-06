@@ -8,13 +8,15 @@ class BlockElements extends Entity{
 	FallingTrigger,
 	Respawn;
 	int FallingSpeed;
-	BlockElements(int bx, int by, int bwidth, int bheight, String btexture, boolean bFalling, int bSpeed, boolean bTrigger, boolean bRespawn, boolean bMakeDamage){
+	String SingleBlockTexture;
+	BlockElements(int bx, int by, int bwidth, int bheight, String[] btexture, String bSingleBlockTexture, boolean bFalling, int bSpeed, boolean bTrigger, boolean bRespawn, boolean bMakeDamage){
 		super(bx, by, bwidth, bheight, btexture);
 		Falling = bFalling;
 		Damage = bMakeDamage;
 		FallingSpeed = bSpeed;
 		FallingTrigger = bTrigger;
 		Respawn = bRespawn;
+		SingleBlockTexture = bSingleBlockTexture;
 		/*id = AnzahlObjekte;
 		x = bx;
 		y = by;
@@ -25,8 +27,12 @@ class BlockElements extends Entity{
 	}
 	//Methoden
 	private void BlockPlacing(){
-		rect(x, y, width, height);
-		image(BlockTexture, x, y , width, height);	
+		//rect(x, y, width, height);
+		if(SingleBlockTexture == 'views/boden.png'){
+			image(BlocksBoden, x, y , width, height);	
+		}else if(SingleBlockTexture == 'views/falling.png'){
+			image(FallingB, x, y , width, height);	
+		}
 	}
 	static void BlockTrigger(){
 		for (Entity e : Entities){
@@ -69,9 +75,9 @@ class BlockElements extends Entity{
 				if(b.Damage == true && b.Falling == false){
 					if(p.x >= b.x && p.x <= b.x+b.width && p.y >= b.y && p.y <= b.y+b.height){
 						//DEAD AND MAYBE Block Animation
-						image(BlockTexture, b.x, b.y , b.width, b.height);
-						/*GameIsLose = true;
-						image(gameover, 0, 0, 600, 500);*/
+						//image(BlockTexture, b.x, b.y , b.width, b.height);
+						GameIsLose = true;
+						image(gameover, 0, 0, 600, 500);
 					}
 				}
 			}
@@ -87,7 +93,7 @@ class BlockElements extends Entity{
 			if(d instanceof BlockElements){
 				d.y += d.FallingSpeed;
 				//Damage or noth , if mario on under the objekt then kill him
-				image(BlockTexture, d.x, d.y , d.width, d.height);
+				//image(BlockTexture, d.x, d.y , d.width, d.height); wird von placing übernommen!
 				if(d.y == 500){
 					if(d.Respawn){
 						d.y = 0-d.height;	
