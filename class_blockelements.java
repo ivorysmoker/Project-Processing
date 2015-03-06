@@ -58,6 +58,24 @@ class BlockElements extends Entity{
 			}	
 		}
 	}
+	static void BlockDmg(){
+		for (Entity e : Entities){
+			if(e instanceof Player){
+				Player p = e;
+			}
+		}
+		for (Entity b : Entities){
+			if(b instanceof BlockElements){
+				if(b.Damage == true && b.Falling == false){
+					if(p.x >= b.x && p.x <= b.x+b.width && p.y >= b.y && p.y <= b.y+b.height){
+						//DEAD AND MAYBE Block Animation
+						GameIsLose = true;
+						image(gameover, 0, 0, 600, 500);
+					}
+				}
+			}
+		}
+	}
 	static void BlockFalling(){
 		for (Entity e : Entities){
 			if(e instanceof Player){
@@ -75,8 +93,6 @@ class BlockElements extends Entity{
 					}else{
 					FallingBlocks.remove(d);
 					}
-					
-					println("Remove this");
 				}
 				if(d.Damage){
 					if(p.x+p.width >= d.x && p.x <= d.x+d.width && p.y >= d.y && p.y <= d.y+d.height){

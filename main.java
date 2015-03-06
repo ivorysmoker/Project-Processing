@@ -26,8 +26,14 @@ BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'
 BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
 BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
 BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+
+BlockElements Bodenstatic = new BlockElements(180, 150, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,true);
+
 BlockElements FallingGroundDMG = new BlockElements(200, 100, 50, 50, {'views/texture.jpg'}, true, 7, false, false ,true);
-BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'}, true, 2, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -100, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -190, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -270, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
 BlockElements FallingGroundNone = new BlockElements(710, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
 //Destroyeble Block Elements
 DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 240, 20, 20, {'views/texture.jpg'}, 'NoLoot', 'Event');
@@ -126,11 +132,19 @@ void draw(){
 	
 	BlockElements.BlockTrigger();
 	BlockElements.BlockFalling();
-	
+	BlockElements.BlockDmg();
 	}
 }
 void keyPressed() {
- 
+  if (key == 'n' || key == 'N') {
+	println("NeuStart");
+	if(GameIsLose == true){
+		println("Geht nicht!");
+	}else{
+		GameIsLose = false;
+	}
+	
+  }	
   if (key == 'j' || key == 'J') {
 	println("Spring mario spring!");
 	MovementMaxSpeed = 4.5;
