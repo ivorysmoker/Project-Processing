@@ -32,6 +32,8 @@ class BlockElements extends Entity{
 			image(BlocksBoden, x, y , width, height);	
 		}else if(SingleBlockTexture == 'views/falling.png'){
 			image(FallingB, x, y , width, height);	
+		}else if(SingleBlockTexture == 'views/texture.jpg'){
+			image(BlockTexture, x, y , width, height);	
 		}
 	}
 	static void BlockTrigger(){
