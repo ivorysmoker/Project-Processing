@@ -20,6 +20,27 @@ private int AnzahlFire = 0;
 private int AnzahlEnemy = 0;
 private int AnzahlObjekte = 0;
 //Block Elements
+//Enemy Koopa2 = new Enemy(275, 25); // X + Y Spawnpoint
+//Enemy Koopa3 = new Enemy(400, 30); // X + Y Spawnpoint
+//Anziehungskraft
+private boolean Gravity = true;
+private boolean EnemyGravity = true;
+final private byte GravityKraft = 5;
+boolean FramesBlocker = false;
+double AnzahlFramesSpeicher;
+//Animation Stuff end
+double AnzahlFrames;
+byte JumpOptik = 0;
+byte MovementMaxSpeed = 3;
+boolean LastPressed;
+boolean Fire = false;
+boolean FeuerBallRichtung;
+boolean debug = true;
+boolean GameIsLose = false;
+//boolean ObjectGravity = true; AnzahlFrames += 15;
+void setup(){
+	size(600, 500); // Grösse des Spielfeldes
+	frameRate( 40 ); // Bilderrate pro Sekunde 40
 BlockElements Boden = new BlockElements(0, 300, 300, 10, {'views/texture.jpg'}, false, 0, false, false ,false); // X / Y / Länge / Höhe
 BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
 BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
@@ -44,28 +65,6 @@ DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 190, 20, 20, {
 //Enemys
 Enemy K = new Enemy(250, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
 Enemy K = new Enemy(150, 20,20,20,1,100,true,false,false,{'lexuEnemy_walkLeft.png','lexuEnemy_walkRight.png'}); // X + Y Spawnpoint
-//Enemy Koopa2 = new Enemy(275, 25); // X + Y Spawnpoint
-//Enemy Koopa3 = new Enemy(400, 30); // X + Y Spawnpoint
-//Anziehungskraft
-private boolean Gravity = true;
-private boolean EnemyGravity = true;
-final private byte GravityKraft = 5;
-boolean FramesBlocker = false;
-double AnzahlFramesSpeicher;
-//Animation Stuff end
-double AnzahlFrames;
-byte JumpOptik = 0;
-byte MovementMaxSpeed = 3;
-boolean LastPressed;
-boolean Fire = false;
-boolean FeuerBallRichtung;
-boolean debug = true;
-boolean GameIsLose = false;
-//boolean ObjectGravity = true; AnzahlFrames += 15;
-void setup(){
-	size(600, 500); // Grösse des Spielfeldes
-	frameRate( 40 ); // Bilderrate pro Sekunde 40
-	
 	//Spritebank.preloadImages();
 	
 	//Loading pic's for the Aninmation and Movement
@@ -98,6 +97,8 @@ void setup(){
 void draw(){
 	if(GameIsLose == true){
 		//open the Game Settings
+		setup(); // reset the game datas
+		GameIsLose = false;
 	}else{
 	background(255, 204, 0); // Überdeckt das gezeichnete
 	background(bg);

@@ -26,7 +26,7 @@ class BlockElements extends Entity{
 	//Methoden
 	private void BlockPlacing(){
 		rect(x, y, width, height);
-		image(BlockTexture, x, y , width, height);
+		image(BlockTexture, x, y , width, height);	
 	}
 	static void BlockTrigger(){
 		for (Entity e : Entities){
@@ -69,7 +69,7 @@ class BlockElements extends Entity{
 				if(b.Damage == true && b.Falling == false){
 					if(p.x >= b.x && p.x <= b.x+b.width && p.y >= b.y && p.y <= b.y+b.height){
 						//DEAD AND MAYBE Block Animation
-						image(FallingB, b.x, b.y , b.width, b.height);
+						image(BlockTexture, b.x, b.y , b.width, b.height);
 						/*GameIsLose = true;
 						image(gameover, 0, 0, 600, 500);*/
 					}
@@ -87,7 +87,7 @@ class BlockElements extends Entity{
 			if(d instanceof BlockElements){
 				d.y += d.FallingSpeed;
 				//Damage or noth , if mario on under the objekt then kill him
-				image(FallingB, d.x, d.y , d.width, d.height);
+				image(BlockTexture, d.x, d.y , d.width, d.height);
 				if(d.y == 500){
 					if(d.Respawn){
 						d.y = 0-d.height;	
