@@ -27,11 +27,11 @@ BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'
 BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
 BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
 BlockElements FallingGroundDMG = new BlockElements(200, 100, 50, 50, {'views/texture.jpg'}, true, 7, false, false ,true);
-BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
+BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'}, true, 2, true, true, false);
 BlockElements FallingGroundNone = new BlockElements(710, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
 //Destroyeble Block Elements
-DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 250, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
-DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 200, 25, 25, {'views/texture.jpg'}, 'NoLoot', 'Event');
+DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 240, 20, 20, {'views/texture.jpg'}, 'NoLoot', 'Event');
+DestroyableBlocksElements DBE = new DestroyableBlocksElements(50, 190, 20, 20, {'views/texture.jpg'}, 'NoLoot', 'Event');
 //BlockElements Boden3 = new BlockElements(200, 100, 200, 50);
 
 
@@ -70,6 +70,7 @@ void setup(){
 	FeuerB = loadImage("views/Feuerball.png");
 	Koopa = loadImage("views/koopa.png");
 	gameover = loadImage("views/gameover.png");
+	bg = loadImage("views/hintergrund.png");
 	images[0]  = loadImage("views/Running-mario1.gif");
     images[1]  = loadImage("views/Running-mario2.gif");
 	images[2]  = loadImage("views/Running-mario3.gif");
@@ -92,6 +93,7 @@ void draw(){
 		//open the Game Settings
 	}else{
 	background(255, 204, 0); // Überdeckt das gezeichnete
+	background(bg);
 	//Loading all Block Elements
 	for(int x=0; x < AnzahlObjekte; x++){
 		MaxBlockElements[x].BlockPlacing();
