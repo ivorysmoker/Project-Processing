@@ -25,11 +25,11 @@ BlockElements Boden2 = new BlockElements(100, 250, 200, 10, {'views/texture.jpg'
 BlockElements Boden3 = new BlockElements(200, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
 BlockElements Boden4 = new BlockElements(400, 250, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
 BlockElements Boden3 = new BlockElements(550, 300, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
-BlockElements Boden3 = new BlockElements(800, 200, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
+BlockElements Boden3 = new BlockElements(800, 205, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,false);
 
 BlockElements Bodenstatic = new BlockElements(180, 150, 100, 10, {'views/texture.jpg'}, false, 0, false, false ,true);
 
-BlockElements FallingGroundDMG = new BlockElements(200, 100, 50, 50, {'views/texture.jpg'}, true, 7, false, false ,true);
+BlockElements FallingGroundDMG = new BlockElements(200, 100, 100, 20, {'views/falling.png'}, true, 7, false, false ,true);
 BlockElements FallingGroundNone = new BlockElements(310, -10, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
 BlockElements FallingGroundNone = new BlockElements(310, -100, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
 BlockElements FallingGroundNone = new BlockElements(310, -190, 50, 10, {'views/texture.jpg'}, true, 1, true, true, false);
@@ -70,6 +70,7 @@ void setup(){
 	
 	//Loading pic's for the Aninmation and Movement
 	BlockTexture = loadImage("views/texture.jpg"); 
+	FallingB = loadImage("views/falling.png"); 
 	standingMario = loadImage("views/Running-mario4.gif");  
 	jumpMario = loadImage("views/Jumping-mario.gif");
 	jumpMarioLeft = loadImage("views/Jumping-marioleft.gif");
