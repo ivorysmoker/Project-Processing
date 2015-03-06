@@ -34,6 +34,7 @@ class Spritebank{
 			if (debug){println('working on line : ' + l);}
 			Sting[] spProperties = l.split(';',-1);
 			PImage spImage = loadImage('graphics/spritebanks/' + spProperties[0]);
+			spImage.loadPixels();
 			Sting spName = spProperties[1];
 			int yOffset = 0;
 			Sting[]	animationDiscriptions = spProperties[2].split(':',-1);
@@ -50,9 +51,21 @@ class Spritebank{
 				ArrayList<PImage> animationImageSet = new ArrayList(frameCount);
 				println('init array done');
 				for(int index = 0 ; index < frameCount; index++){ 
-					lexutestimg = spImage.get(0,0,20,30); //.get(index*frameWidth,yOffset,frameWidth,frameHeight);
-					animationImageSet.add(spImage.get(index*frameWidth,yOffset,frameWidth,frameHeight));
-					println('ay ' + index);
+					PImage img = new PImage();
+					
+					
+					
+					//lexutestimg = spImage; //get(0,0,20,30); //.get(index*frameWidth,yOffset,frameWidth,frameHeight);
+					
+					for(int y = 0; y < frameHeight; y++){
+						for(int x = 0; x < frameWidth; x++){
+							img.loadPixels();
+							img.pixels[y*frameWidth+x] = spImage.pixels[y*frameWidth+x];
+							img.updatePixels();
+							//lexutestimg = img;
+						}
+					}
+					animationImageSet.add(img);
 				}
 				yOffset += frameHeight;
 				AnimationSet as = new AnimationSet(frameWidth,frameHeight,frameSkip,true,animationImageSet);
